@@ -1,0 +1,218 @@
+package com.najasoftware.fdv.service;
+
+import android.content.Context;
+import android.util.Log;
+
+import com.najasoftware.fdv.model.Cidade;
+import com.najasoftware.fdv.model.Cliente;
+import com.najasoftware.fdv.model.Endereco;
+import com.najasoftware.fdv.model.Telefone;
+import com.najasoftware.fdv.util.GravarArquivo;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import livroandroid.lib.utils.FileUtils;
+
+/**
+ * Created by Lemoel Marques - NajaSoftware on 02/05/2016.
+ * lemoel@gmail.com
+ */
+public class ClienteService {
+
+    private final boolean LOG_ON = false;
+    private final String TAG = "ClienteService";
+    private Context context;
+
+    public ClienteService(Context context) {
+        this.context = context;
+    }
+
+    public List<Cliente> getClientes() throws IOException {
+        try {
+            String fileName = String.format("clientes_fdv.json");
+            Log.d(TAG, "Abrindo arquivo: " + fileName);
+
+            //Lê o arquivo da memoria interna
+            String json = FileUtils.readFile(context, fileName, "UTF-8");
+            if (json == null) {
+                Log.d(TAG, "Arquivo " + fileName + " Não encontrado");
+                return null;
+            }
+            List<Cliente> clientes = parserJson(json);
+            return clientes;
+        } catch (Exception e) {
+            Log.e(TAG, "Erro ao ler os clientes: " + e.getMessage(), e);
+            return null;
+        }
+    }
+
+    private List<Cliente> parserJson(String json) throws IOException {
+        List<Cliente> clientes = new ArrayList<Cliente>();
+
+        try {
+            JSONObject root = new JSONObject(json);
+            JSONObject obj = root.getJSONObject("clientes");
+            JSONArray jsonClientes = obj.getJSONArray("cliente");
+
+            for (int i = 0; i < jsonClientes.length(); i++) {
+                JSONObject jsonCliente = jsonClientes.getJSONObject(i);
+                Cliente c = new Cliente();
+
+                //Lê informações de cada cliente
+                c.setCnpj(jsonCliente.optString("cnpj"));
+                c.setRg(jsonCliente.optString("rg"));
+                c.setOrgaoExpedidorRg(jsonCliente.getString("orgao_rg"));
+                c.setInscricacaoEstadual(jsonCliente.getString("inscricao_estadual"));
+                c.setNome(jsonCliente.optString("nome"));
+                c.setNomeFantasia(jsonCliente.getString("nome_fantasia"));
+                c.setDtCadastro(jsonCliente.getString("dt_cadastro"));
+                c.setDtUltimaAlteracao(jsonCliente.getString("dt_atualizacao"));
+                c.setEmail(jsonCliente.getString("email"));
+                c.setObs(jsonCliente.getString("obs"));
+                c.setStatus(jsonCliente.optInt("status"));
+                c.setStatusFinanceiro(jsonCliente.optString("status_financeiro"));
+                c.setVendedorId(jsonCliente.getLong("codigo_vendedor"));
+
+                //Telefones
+                ArrayList<Telefone> telefones = new ArrayList<>();
+
+                //Telefone 1 Vem do campo TELEFONE
+                Telefone telefone = new Telefone();
+                telefone.setNumero(jsonCliente.optString("telefone"));
+                telefone.setCliente(c);
+                telefones.add(telefone);
+
+                //Fax - Telefone 2 vem do campo FAX
+                Telefone fax = new Telefone();
+                fax.setNumero(jsonCliente.optString("fax"));
+                fax.setCliente(c);
+                telefones.add(fax);
+
+                //Cliente recebe os telefones
+                c.setTelefones(telefones);
+
+
+                //Enderecos
+                ArrayList<Endereco> enderecos = new ArrayList<>();
+
+                //Aplicacao já ficara pronta para importar vários enderecos
+                Endereco endereco = new Endereco();
+                endereco.setCliente(c);
+                endereco.setRua(jsonCliente.getString("endereco"));
+                endereco.setNumero(jsonCliente.getString("numero"));
+                endereco.setBairro(jsonCliente.getString("bairro"));
+
+                //Cidade do Endereco
+                endereco.setCidade(new Cidade(jsonCliente.getLong("codigo_municipio"), null, null));
+
+                //Complemento do endereco
+                endereco.setComplemento(jsonCliente.getString("complemento"));
+
+                //Gravando endereco no ArrayList
+                enderecos.add(endereco);
+
+                //Gravando dentro do cliente
+                c.setEnderecos(enderecos);
+
+                if (LOG_ON) {
+                    Log.d(TAG, "Cliente " + c.getNome());
+                }
+
+                clientes.add(c);
+            }
+
+            if (LOG_ON) {
+                Log.d(TAG, clientes.size() + " encontrados. ");
+            }
+
+        } catch (JSONException e) {
+            throw new IOException(e.getMessage(), e);
+        }
+        return clientes;
+    }
+
+    public String toJson(List<Cliente> clientes) {
+
+        try {
+
+            JSONArray jsonArrayPessoa = new JSONArray();
+
+            for (Cliente cliente : clientes) {
+
+                JSONObject jsonCliente = new JSONObject();
+
+                jsonCliente.put("cnpj",cliente.getCnpj());
+                jsonCliente.put("rg",cliente.getRg());
+                jsonCliente.put("inscricao_estadual",cliente.getInscricacaoEstadual());
+                jsonCliente.put("dt_cadastro",cliente.getDtCadastro().toString());
+                jsonCliente.put("dt_ultima_alteracao",cliente.getDtUltimaAlteracao().toString());
+                jsonCliente.put("nome", cliente.getNome().toString());
+                jsonCliente.put("nome_fantasia",cliente.getNomeFantasia().toString());
+                jsonCliente.put("latitude",cliente.getLatitude());
+                jsonCliente.put("longitude",cliente.getLongitude());
+                jsonCliente.put("email",cliente.getEmail());
+                jsonCliente.put("orgao_expedicao",cliente.getOrgaoExpedidorRg());
+                jsonCliente.put("obs",cliente.getObs());
+
+                //Criando array para telefones
+                JSONArray jsonTelefones = new JSONArray();
+                for (Telefone tel : cliente.getTelefones()) {
+                    JSONObject jsonTelefone = new JSONObject();
+                    jsonTelefone.put("cliente_cnpj", cliente.getCnpj());
+                    jsonTelefone.put("numero",tel.getNumero());
+                    jsonTelefones.put(jsonTelefone);
+                }
+                jsonCliente.put("telefones",jsonTelefones);
+
+                //Endereco
+                JSONObject jsonEndereco = new JSONObject();
+                jsonEndereco.put("cliente_cnpj",cliente.getCnpj());
+                jsonEndereco.put("cidade_id",cliente.getEnderecos().get(0).getCidade().getId());
+                jsonEndereco.put("numero",cliente.getEnderecos().get(0).getNumero());
+                jsonEndereco.put("bairro",cliente.getEnderecos().get(0).getBairro().toString());
+                jsonEndereco.put("rua",cliente.getEnderecos().get(0).getRua());
+                jsonEndereco.put("complemento",cliente.getEnderecos().get(0).getComplemento());
+
+                //Guardando o endereco dentro do cliente
+                jsonCliente.put("endereco",jsonEndereco);
+
+                jsonArrayPessoa.put(jsonCliente);
+            }
+
+            JSONObject jsonClientes = new JSONObject();
+            jsonClientes.put("cliente",jsonArrayPessoa).toString();
+            JSONObject jsonRoot = new JSONObject();
+            return jsonRoot.put("clientes",jsonClientes).toString();
+
+        } catch (Exception e) {
+
+        }
+
+
+        return null;
+
+    }
+
+
+    //Gera o Arquivo Json com todos os pedidoe e grava dentro do dispositivo
+    public boolean gerarJson(String nomeArquivo, List<Cliente> clientes) {
+        String clientesJson;
+        //Retorna o String Json pronta para gravacao o a List enviada
+        clientesJson = toJson(clientes);
+        //Grava a string enviada no arquivo dentro do dispositivo
+        GravarArquivo gravarArquivo = new GravarArquivo(context.getFilesDir());
+        return gravarArquivo.gravar(clientesJson, nomeArquivo);
+    }
+
+    public boolean delete(String fileName) {
+        File file = new File(context.getFilesDir(), fileName);
+        return file.delete();
+    }
+}

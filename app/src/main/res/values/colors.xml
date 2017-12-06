@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#F44336</color>
+    <color name="primary_dark">#D50000</color>
+    <color name="textColorPrimary">#FFFFFF</color>
+    <!--<color name="windowBackground">#FFFFFF</color>-->
+    <!--<color name="navigationBarColor">#000000</color>-->
+    <color name="color_accent">#D32F2F</color>
+
+    <!-- Cores do Tema Material -->
+    <color name="accent">#ff4081</color>
+    <color name="control_highlight">#FFCDD2</color>
+
+    <!-- Outras cores -->
+    <color name="transparent">#0000</color>
+    <color name="white">#fff</color>
+    <color name="black">#000</color>
+    <color name="blue">#3F51B5</color>
+    <color name="red">#f00</color>
+    <color name="green">#2E7D32</color>
+    <color name="gray">#eeeeee</color>
+
+    <!-- SwipeRefreshLayout -->
+    <color name="refresh_progress_1">#33B5E5</color>
+    <!-- azul -->
+    <color name="refresh_progress_2">#66BB6A</color>
+    <!-- verde -->
+    <color name="refresh_progress_3">#CC0000</color>
+    <!-- vermelho -->
+
+</resources>

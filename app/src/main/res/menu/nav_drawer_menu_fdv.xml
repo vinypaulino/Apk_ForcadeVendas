@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_enviar_dados"
+            android:icon="@drawable/ic_enviar"
+            android:title="@string/action_update_dados" />
+
+        <item
+            android:id="@+id/nav_enviar_clientes"
+            android:icon="@drawable/ic_enviar"
+            android:title="@string/action_enviar_apenas_cliente" />
+
+        <item
+            android:id="@+id/nav_importar_dados"
+            android:icon="@drawable/ic_action_refresh"
+            android:title="@string/action_download_dados" />
+
+        <item
+            android:id="@+id/nav_clientes"
+            android:checked="true"
+            android:icon="@drawable/ic_no_image"
+            android:title="Cad Clientes" />
+
+        <item
+            android:id="@+id/nav_produtos"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/produtos" />
+
+        <item
+            android:id="@+id/nav_pedidos_enviados"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/pedidos_enviados" />
+
+
+        <item
+            android:id="@+id/nav_limpar_banco"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Limpar Dados" />
+
+        <!-- WebView com informações sobre o livro -->
+        <item
+            android:id="@+id/nav_item_site_naja"
+            android:icon="@drawable/ic_drawer_site_naja"
+            android:title="@string/site_da_naja" />
+
+        <item
+            android:id="@+id/nav_item_sair"
+            android:icon="@drawable/ic_drawer_site_naja"
+            android:title="@string/sair" />
+
+    </group>
+</menu>

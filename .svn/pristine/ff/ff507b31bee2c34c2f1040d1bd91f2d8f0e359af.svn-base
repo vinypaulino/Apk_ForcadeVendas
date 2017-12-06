@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="a45bc1ed812137b21dddd1cedaa3712b308f0b3f">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-cast-9.0.2_8f01ea075e04977fa4ca4e6e9cc149d890495ed7\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.firebase\firebase-storage\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="cd4c7c54e15d9ccbc448384fa2c4684d69ca73f0">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-storage-9.0.2_5d68247e5bce5cac5c3a6336b59516c65aa7022b\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\.gradle\caches\modules-2\files-2.1\org.parceler\parceler-api\1.1.1\d081ad6f7c51627ebe2dbf157cc525cbf5e9c821\parceler-api-1.1.1.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="d081ad6f7c51627ebe2dbf157cc525cbf5e9c821">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\parceler-api-1.1.1_97a84d2a4fa7806677d2e322d21da4ba96b06db4\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.android.support\wearable\1.1.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="27f19641b81b1078e653d2f0e5d1ed44d158a785">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.support-wearable-1.1.0_188d9ce0a26f5632e30a7fa9d04dcb6469e549f4\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="d900f2a1ff098cac8befe6c023d723e9afb154be">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-appindexing-9.0.2_6c56aaf00ddad7ea44a6d77e5b97a050978bb078\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.firebase\firebase-auth-module\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="79e298d7fed2fcada58da7032d07d34ee198a545">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-auth-module-9.0.2_3886927486c1985e6d0f22f350dbe1603ef89753\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\23.0.0\jars\libs\internal_impl-23.0.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="03d38bb042efe3e5ce27ba66b729a9523c36d8fe">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.0.0_1b6674e73a4d44aae4fc2e65e8973d8a0886c6fb\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="9919563cffd8e3732e944d3c437d4b9575a08448">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-common-9.0.2_e894c06a2ce71b69bb6941d28b71083bb6bbd7ae\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="7e52b440a26498c56b4f263e215223b5451c955e">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-nearby-9.0.2_f3f3aaa01a31442c673705fbe76efc664a4e5f34\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics-impl\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="6c58c14d15602fea2c50138c73bb107e8b832b62">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-analytics-impl-9.0.2_bfd995519b0c7aa9cba23e3e9c7ce9d6d65fbfc7\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\.gradle\caches\modules-2\files-2.1\org.parceler\parceler\1.1.1\c26eca3f5b61dadea47968c6b061961ac4db3649\parceler-1.1.1.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="c26eca3f5b61dadea47968c6b061961ac4db3649">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\parceler-1.1.1_3189e926183d903180929404feb7afb9f732798f\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="53f10fcd322a3931495d6ca2078a81f4957cdbce">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-fitness-9.0.2_abb239e62edea3342ef8ca95fc9f5701088838e9\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="764d32faf85bc6f7bd2cdcb3a70a482c1884fdd2">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-wearable-9.0.2_4c2aa7f121ad233f874c2e3d0742dc8dd7afa1c5\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="b3d0809a742c5f768c6aa9efc6decd5c1d6cd227">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-iid-9.0.2_d3a4ce19ca100e2adb6a845dc4523e86419c730c\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="92a1d5f71b0fc8938f1d3f2e6ef984b52b894b4d">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-location-9.0.2_ac044277fb4459d06e9674cebdd114be8108c154\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="e6970f0554f9508c041f1f6960af15cc888c9f35">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-gcm-9.0.2_3c8246a9f22853730ae02e5eaf762531b2d97e5e\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.4.0\support-annotations-23.4.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.4.0_43c1cdca8b95c5e12e0533faaa9a3662504579a6\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="f4fb6981392ca7680d02fd57d26d6124c141d9d9">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-ads-9.0.2_b9f6e693c1d22c608ae743d2882aca6b0c0583bb\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="d9ea4cdaafa29ec4651d6e4715788d3fcaa7b913">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tagmanager-9.0.2_d2fcacdac3ca4dfb489b91c66a4782ec53fad701\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.firebase\firebase-database\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="4ec890171a97b5ab98292f131aa784e0f3792c73">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-database-9.0.2_3f455d892d66d2c4ebd6ff2eb5ace981dd1cfef4\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="143813b18381b28de1e04aae1d92fcb374a0add9">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-drive-9.0.2_052ebaac3efee92eca84d14e77f00a80fe0fddd4\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.android.support\design\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="5326d9a850d491714fef8cbfaa9ea3416f0bf0d2">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-23.4.0_7b027157f4c52ae07a1afb89ad406e2204a4a6ab\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="51a11c41a08f099a204e1b8dcc04f27217de50ec">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-analytics-9.0.2_e6541ac83098fdc0694ddb6ebaaef87186cb4d7d\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads-lite\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="b8e0372ca6dc89ac4fe22b76eeea4f68ece435b8">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-ads-lite-9.0.2_6d00d41a74fabe950b8e63b702fa7c29ecb57147\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="0c835e9f3875cf245877c9b17d1c69bc98f16057">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-identity-9.0.2_219520c68a97e4f8ded74d0a49a922539e0f2360\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.firebase\firebase-messaging\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="f2774b1e02e5fbc524590311a744263c3b152d63">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-messaging-9.0.2_69db8652d5b06be659dee45c75358f2e06a15e99\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="b6af089f583d547bcffc0689b2e80bc7aaa54b15">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-safetynet-9.0.2_a4008cc7ac8fc4994dbf72ed4f376a896b7fed59\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\br.com.livroandroid\android-utils\1.0.4\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="9f14c2f5d013acbd97e493a589cfd62b5a59f5bb">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\br.com.livroandroid-android-utils-1.0.4_2aa5f7a99d2512c274a5ae914e7234037beb475d\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-23.4.0_39a582e27dcc325605d81998bc24215d16814d5d\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ec75036c3c52e451d0cde50a5aedaf5fd32354a0">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-23.4.0_b229146a24061f41a29c2b63727f2458abf7e533\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="fe5b47e764869f1076cb9cfe12801ed2ef4e9117">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-analytics-9.0.2_1369e0a2c4bfc4677457d2e51fd757bab7aa8a03\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="f709d95c656a0901487921334b878e86638bba2b">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_9cc8316f1faf6095beb5d983cb56894eda3ed53b\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.android.support\multidex\1.0.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="78ea232052df889856dcb7b7b542707c89bb3bfb">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-multidex-1.0.1_d1f6dca3677d5a89ef9f27b586f56f80b052fb47\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-23.4.0_b9b058ca332c47c090cf7fa5321f9f4ae3834707\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="aec1bc54964a85d851c2c1b1cb7f90f7dbd755ab">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tasks-9.0.2_98d5052547270c7c6d6a5c2f26c307e3b11fc831\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="a498fab72f8663c26fbf3d4496eb6b673b17bcae">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-games-9.0.2_3bbfb77fb7ec01175b4740858f6bf76d6127f6ca\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="4022261eeea0d92eb2997a68d2c1f084a16abad9">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-basement-9.0.2_990f2dbfa0456f377cf0b8bae5cefd5742db4cc5\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="bc156efaaee99f1ef6bf471347373a4cbb28e2a1">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-wallet-9.0.2_13fd30b2339b3c344f1fb1065b9f5a53e2132218\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-iid\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="cf16220db9128d91a215aedc739584181d5ca6a4">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-iid-9.0.2_93555e95928dd560b2f78c7f594ad95c56df285d\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="20e1a0f0de6276a5f36062b655f8b20f8cc00cc4">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-maps-9.0.2_fa55a072bb3313ea8efe4d96e285a84634a9ad76\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="94d9cedd04b124aed044ac71c451a292856d854c">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-base-9.0.2_8f01b3ae92c24999b5dd8ffa8c69544f7b73c6df\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="c96952c162c9f6076f44c5939982cb35491442ea">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-plus-9.0.2_b21a534b305f2f18ab5beb4c1a5251cdd9632478\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.firebase\firebase-config\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="604ecf403feb0084dc6d0c12f1677a490cf45e4c">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-config-9.0.2_293db218c01912a163afdeb1feed7069090a89da\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\23.0.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="d358b3dd49a7c67844622dcbc9cf4339e13952ce">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-mediarouter-v7-23.0.0_29824f49b05c23586b56bc20c7926f1af0f60a13\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.firebase\firebase-auth-common\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="568d5bda0b4d51f90d978ace369bb9ad024d2057">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-auth-common-9.0.2_ee3ee0feaa2a53a4d60419de519ba34ca6e1e14a\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth-base\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="829c6e46cb221c2102801221c648b77113743e81">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-auth-base-9.0.2_0e01fff7423026f220534952054fe3dcec7c9e47\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.firebase\firebase-auth\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="fa472b7cbd3897bf6bed6068ac0b00e494987688">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-auth-9.0.2_907923b31626b8d3194c4d3fb68ce6f2092eab4c\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.firebase\firebase-storage-common\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="6ff48ef26bc539c78af4aa061cb9bad6abcbf5e8">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-storage-common-9.0.2_018f77835b2658ef3ec18876c53a10ee59eb5fae\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="e11da70cff6a544a45cdc21f419802d9bb9043ac">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-appinvite-9.0.2_91706b035489ed6a4cbb75345e1651456b4bb3d7\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.firebase\firebase-crash\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="922c24fbfc4247947fcfaf2b95f295a16a8c3d17">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-crash-9.0.2_e9638970d3c792520d0b551b5d47020c0d4d23c2\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.firebase\firebase-database-connection\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="9819419ce8d79f3f81a0fc70f9345ac8c843af9c">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-database-connection-9.0.2_5888a02dbd984781825e38dddf83d4e4f93f2e73\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="060a7157438a0b1b0706b99c430fb3ecbc5a79a4">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-auth-9.0.2_986c6326c46552b9e4845f7ec0b94302231ff2cb\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="8c0fc9b1ea0bac0cb31d60c8b1bf2feb0518e3a9">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-panorama-9.0.2_60c6d8a6906738ed2fab91823f6108a935c735e8\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="d9ecde39b460470e655de6e47c05573d2d5a8bfb">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-cardview-v7-23.4.0_dc1926ff29ad2bbcab49f5cf13d3548ac88851d9\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\.gradle\caches\modules-2\files-2.1\commons-net\commons-net\20030805.205232\d5d117a36bca0b628a77c4d4d513eea4104749dc\commons-net-20030805.205232.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="d5d117a36bca0b628a77c4d4d513eea4104749dc">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\commons-net-20030805.205232_757021852cf7526fb9e88261ebb687e82c36bc7e\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="a511c684ea4c2cf31a3377d51e7677cb76696e07">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-analytics-impl-9.0.2_646156392f1a73ab94f3d81126afa75af7ad3bb5\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.4.0_a3866b0fa7e38b9600e1a6be83c7de16f49b2878\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="e0c5285e734138d1602864268aad36c7e8f3edf4">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_184866630532d5cc3b74c45869292af49d74cd92\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-23.4.0_1b197268aff881cffe975a1b92231c4ac64cf1ae\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-vision\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="2ab5be19bbd34bae74662ea6b2d4451314d92d97">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-vision-9.0.2_7af7f8d67160561d1b14ab91b8842d4cb0ebfaca\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager-api\9.0.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="f399a2fde7888450cadcaec4974bfd169d8cce43">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tagmanager-api-9.0.2_7937a262b987b6888615de6be106ab1db434ebb2\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\libs\internal_impl-23.4.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="C:\Users\Alonso\AndroidStudioProjects\ForcaDeVenda\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.4.0_075331cb6db7ecee7d1cb7d6b66a4bffa69eaf8a\classes.dex" />
+    </item>
+
+</items>

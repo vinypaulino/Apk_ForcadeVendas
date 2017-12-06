@@ -1,0 +1,139 @@
+
+package com.najasoftware.fdv.model;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import android.os.Parcelable;
+import android.os.Parcelable.Creator;
+import org.parceler.Generated;
+import org.parceler.InjectionUtil;
+import org.parceler.ParcelWrapper;
+import org.parceler.ParcelerRuntimeException;
+
+@Generated(value = "org.parceler.ParcelAnnotationProcessor", date = "2016-08-16T09:49-0400")
+@SuppressWarnings({
+    "unchecked",
+    "deprecation"
+})
+public class Produto$$Parcelable
+    implements Parcelable, ParcelWrapper<com.najasoftware.fdv.model.Produto>
+{
+
+    private com.najasoftware.fdv.model.Produto produto$$0;
+    @SuppressWarnings("UnusedDeclaration")
+    public final static Produto$$Parcelable.Creator$$4 CREATOR = new Produto$$Parcelable.Creator$$4();
+
+    public Produto$$Parcelable(com.najasoftware.fdv.model.Produto produto$$2) {
+        produto$$0 = produto$$2;
+    }
+
+    @Override
+    public void writeToParcel(android.os.Parcel parcel$$0, int flags) {
+        write(produto$$0, parcel$$0, flags, new HashSet<Integer>());
+    }
+
+    public static void write(com.najasoftware.fdv.model.Produto produto$$1, android.os.Parcel parcel$$1, int flags$$0, Set<Integer> identitySet$$0) {
+        int identity$$0 = System.identityHashCode(produto$$1);
+        parcel$$1 .writeInt(identity$$0);
+        if (!identitySet$$0 .contains(identity$$0)) {
+            identitySet$$0 .add(identity$$0);
+            if (produto$$1 == null) {
+                parcel$$1 .writeInt(-1);
+            } else {
+                parcel$$1 .writeInt(1);
+                if (InjectionUtil.getField(java.lang.Double.class, com.najasoftware.fdv.model.Produto.class, produto$$1, "preco") == null) {
+                    parcel$$1 .writeInt(-1);
+                } else {
+                    parcel$$1 .writeInt(1);
+                    parcel$$1 .writeDouble(InjectionUtil.getField(java.lang.Double.class, com.najasoftware.fdv.model.Produto.class, produto$$1, "preco"));
+                }
+                parcel$$1 .writeString(InjectionUtil.getField(java.lang.String.class, com.najasoftware.fdv.model.Produto.class, produto$$1, "urlFoto"));
+                com.najasoftware.fdv.model.CategoriaProduto$$Parcelable.write(InjectionUtil.getField(com.najasoftware.fdv.model.CategoriaProduto.class, com.najasoftware.fdv.model.Produto.class, produto$$1, "categoriaProduto"), parcel$$1, flags$$0, identitySet$$0);
+                parcel$$1 .writeString(InjectionUtil.getField(java.lang.String.class, com.najasoftware.fdv.model.Produto.class, produto$$1, "nome"));
+                parcel$$1 .writeString(InjectionUtil.getField(java.lang.String.class, com.najasoftware.fdv.model.Produto.class, produto$$1, "tipoUnidade"));
+                if (InjectionUtil.getField(java.lang.Long.class, com.najasoftware.fdv.model.Produto.class, produto$$1, "id") == null) {
+                    parcel$$1 .writeInt(-1);
+                } else {
+                    parcel$$1 .writeInt(1);
+                    parcel$$1 .writeLong(InjectionUtil.getField(java.lang.Long.class, com.najasoftware.fdv.model.Produto.class, produto$$1, "id"));
+                }
+                parcel$$1 .writeString(InjectionUtil.getField(java.lang.String.class, com.najasoftware.fdv.model.Produto.class, produto$$1, "descricao"));
+            }
+        }
+    }
+
+    @Override
+    public int describeContents() {
+        return  0;
+    }
+
+    @Override
+    public com.najasoftware.fdv.model.Produto getParcel() {
+        return produto$$0;
+    }
+
+    public static com.najasoftware.fdv.model.Produto read(android.os.Parcel parcel$$3, Map<Integer, Object> identityMap$$0) {
+        com.najasoftware.fdv.model.Produto produto$$3;
+        int identity$$1 = parcel$$3 .readInt();
+        if (identityMap$$0 .containsKey(identity$$1)) {
+            com.najasoftware.fdv.model.Produto produto$$4 = ((com.najasoftware.fdv.model.Produto) identityMap$$0 .get(identity$$1));
+            if ((produto$$4 == null)&&(identity$$1 != 0)) {
+                throw new ParcelerRuntimeException("An instance loop was detected whild building Parcelable and deseralization cannot continue.  This error is most likely due to using @ParcelConstructor or @ParcelFactory.");
+            }
+            return produto$$4;
+        }
+        if (parcel$$3 .readInt() == -1) {
+            produto$$3 = null;
+            identityMap$$0 .put(identity$$1, null);
+        } else {
+            com.najasoftware.fdv.model.Produto produto$$5;
+            identityMap$$0 .put(identity$$1, null);
+            produto$$5 = new com.najasoftware.fdv.model.Produto();
+            identityMap$$0 .put(identity$$1, produto$$5);
+            int int$$0 = parcel$$3 .readInt();
+            java.lang.Double double$$0;
+            if (int$$0 < 0) {
+                double$$0 = null;
+            } else {
+                double$$0 = parcel$$3 .readDouble();
+            }
+            InjectionUtil.setField(com.najasoftware.fdv.model.Produto.class, produto$$5, "preco", double$$0);
+            InjectionUtil.setField(com.najasoftware.fdv.model.Produto.class, produto$$5, "urlFoto", parcel$$3 .readString());
+            com.najasoftware.fdv.model.CategoriaProduto categoriaProduto$$0 = com.najasoftware.fdv.model.CategoriaProduto$$Parcelable.read(parcel$$3, identityMap$$0);
+            InjectionUtil.setField(com.najasoftware.fdv.model.Produto.class, produto$$5, "categoriaProduto", categoriaProduto$$0);
+            InjectionUtil.setField(com.najasoftware.fdv.model.Produto.class, produto$$5, "nome", parcel$$3 .readString());
+            InjectionUtil.setField(com.najasoftware.fdv.model.Produto.class, produto$$5, "tipoUnidade", parcel$$3 .readString());
+            int int$$1 = parcel$$3 .readInt();
+            java.lang.Long long$$0;
+            if (int$$1 < 0) {
+                long$$0 = null;
+            } else {
+                long$$0 = parcel$$3 .readLong();
+            }
+            InjectionUtil.setField(com.najasoftware.fdv.model.Produto.class, produto$$5, "id", long$$0);
+            InjectionUtil.setField(com.najasoftware.fdv.model.Produto.class, produto$$5, "descricao", parcel$$3 .readString());
+            produto$$3 = produto$$5;
+        }
+        return produto$$3;
+    }
+
+    public final static class Creator$$4
+        implements Creator<Produto$$Parcelable>
+    {
+
+
+        @Override
+        public Produto$$Parcelable createFromParcel(android.os.Parcel parcel$$2) {
+            return new Produto$$Parcelable(read(parcel$$2, new HashMap<Integer, Object>()));
+        }
+
+        @Override
+        public Produto$$Parcelable[] newArray(int size) {
+            return new Produto$$Parcelable[size] ;
+        }
+
+    }
+
+}

@@ -1,0 +1,47 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--Busca dos clientes -->
+    <item
+        android:id="@+id/search_cliente"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="@string/action_lista_empresa_diversos"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="collapseActionView|ifRoom"/>
+
+    <!--Enviar dados ao servidor -->
+    <item
+        android:id="@+id/action_enviar_dados"
+        android:orderInCategory="100"
+        android:title="@string/action_update_dados"
+        app:showAsAction="never" />
+
+    <!--Enviar dados ao servidor -->
+    <item
+        android:id="@+id/action_enviar_apenas_cliente"
+        android:orderInCategory="100"
+        android:title="@string/action_enviar_apenas_cliente"
+        app:showAsAction="never" />
+
+    <!--Download de dados -->
+    <item
+        android:id="@+id/action_download_dados"
+        android:orderInCategory="100"
+        android:title="@string/action_download_dados"
+        app:showAsAction="never" />
+
+    <!--A respeito do software -->
+    <item
+        android:id="@+id/action_about"
+        android:title="@string/action_about"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+    <!--sair-->
+    <item
+        android:id="@+id/action_sair"
+        android:title="@string/sair"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+</menu>

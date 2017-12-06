@@ -1,0 +1,146 @@
+package com.najasoftware.fdv.activity;
+
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
+import android.view.Menu;
+import android.view.View;
+
+import com.najasoftware.fdv.FdvApplication;
+import com.najasoftware.fdv.R;
+import com.najasoftware.fdv.adapter.ProdutosAdapter;
+import com.najasoftware.fdv.dao.ItemDAO;
+import com.najasoftware.fdv.dao.ProdutoDAO;
+import com.najasoftware.fdv.model.CategoriaProduto;
+import com.najasoftware.fdv.model.Item;
+import com.najasoftware.fdv.model.Produto;
+
+import org.parceler.Parcels;
+
+import java.util.List;
+
+public class ProdutoActivity extends BaseActivity {
+
+    protected RecyclerView recyclerView;
+    private List<Produto> produtos;
+    private CategoriaProduto categoria;
+    private FdvApplication app;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_produto);
+        setUpToolBar();
+        getSupportActionBar().setTitle("Produtos");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        app = FdvApplication.getInstance();
+
+        //Pegando a categoria do produto
+        categoria = Parcels.unwrap(getIntent().getParcelableExtra("categoria"));
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_busca_produto, menu);
+        SearchView mSearchView = (SearchView) menu.findItem(R.id.item_search_produto).getActionView();
+        mSearchView.setQueryHint("Produto");
+        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                if (newText.length() > 0) {
+                    carregaLista(newText);
+                } else {
+                    //Caso não tenha informações de busca
+                    carregaLista(null);
+                }
+                return false;
+            }
+        });
+        return true;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        carregaLista(null);
+    }
+
+    private void carregaLista(String newText) {
+        // Busca os produtos
+        ProdutoDAO produtoDAO = new ProdutoDAO(getContext());
+
+        if (categoria != null) {
+            if (newText != null) {
+                this.produtos = produtoDAO.buscarAll(newText, categoria);
+            } else {
+                this.produtos = produtoDAO.buscaProdutos(categoria);
+            }
+        } else {
+            this.produtos = produtoDAO.buscarAll("",new CategoriaProduto(Long.parseLong("0"),null, null));
+        }
+
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerViewProdutos);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setHasFixedSize(true);
+
+        // Atualiza a lista
+        recyclerView.setAdapter(new ProdutosAdapter(getContext(), produtos, onClickProduto()));
+    }
+
+    private ProdutosAdapter.ProdutoOnClickListener onClickProduto() {
+        return new ProdutosAdapter.ProdutoOnClickListener() {
+            @Override
+            public void onClickProduto(View view, int idx) {
+                Produto produto = produtos.get(idx);
+                int semaforo = 1;
+
+                if (app.getPedido() != null) {
+
+                    ItemDAO itemDAO = new ItemDAO(getContext());
+                    List<Item> itens = itemDAO.getItens(app.getPedido().getId());
+
+                    int tem = 0;
+                    for (Item item : itens) {
+                        if (item.getProduto().getId() == produto.getId()) {
+                            semaforo = 0;
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                            builder.setMessage("Produto já tem no pedido, edite o item na tela do pedido")
+                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                        }
+                                    });
+                            AlertDialog d = builder.create();
+                            d.setTitle("Atenção");
+                            d.show();
+
+
+                        }
+                    }
+
+                } else if (app.getPedido() == null && app.getCliente() == null) {
+                    semaforo = 0;
+                }
+
+                if (semaforo == 1) {
+                    Intent intent = new Intent(getContext(), AddItemPedidoActivity.class);
+                    intent.putExtra("produto", Parcels.wrap(produto));
+                    startActivity(intent);
+                }
+
+            }
+        };
+    }
+}

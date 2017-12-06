@@ -1,0 +1,267 @@
+package com.najasoftware.fdv.helper;
+
+import android.os.Build;
+import android.telephony.PhoneNumberFormattingTextWatcher;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
+
+import com.najasoftware.fdv.FdvApplication;
+import com.najasoftware.fdv.R;
+import com.najasoftware.fdv.activity.CadClienteActivity;
+import com.najasoftware.fdv.model.Cidade;
+import com.najasoftware.fdv.model.Cliente;
+import com.najasoftware.fdv.model.ClienteStatusEnum;
+import com.najasoftware.fdv.model.Endereco;
+import com.najasoftware.fdv.model.Telefone;
+import com.najasoftware.fdv.model.Uf;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by Lemoel Marques - NajaSoftware on 05/05/2016.
+ * lemoel@gmail.com
+ */
+public class CadClienteHelper {
+
+    private EditText fieldNameFantasia;
+    private EditText fieldName;
+    private EditText fieldFone1;
+    private EditText fieldFone2;
+    private TextView textViewOcultoTel1;
+    private TextView textViewOcultoTel2;
+    private EditText fieldEmail;
+    private EditText fieldCnpj;
+    private EditText fieldInscricaoEstadual;
+    private EditText fieldStreet;
+    private EditText fieldNumber;
+    private EditText fieldBairro;
+    private EditText fieldComplemento;
+    private EditText fieldObs;
+    private Spinner comboUf;
+    private Spinner comboCidade;
+    private TextView fieldOcultoDtCadastro;
+    private ImageView imgVStatus;
+    private EditText fieldRg;
+    private EditText fieldOrgaoRg;
+
+    private Cliente cliente;
+
+    public CadClienteHelper(CadClienteActivity activity) {
+
+        fieldNameFantasia = (EditText) activity.findViewById(R.id.etNomeFantasia);
+        fieldName = (EditText) activity.findViewById(R.id.etNome);
+        fieldFone1 = (EditText) activity.findViewById(R.id.etTel1);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            fieldFone1.addTextChangedListener(new PhoneNumberFormattingTextWatcher("BR"));
+        }
+
+        fieldFone2 = (EditText) activity.findViewById(R.id.etTel2);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            fieldFone2.addTextChangedListener(new PhoneNumberFormattingTextWatcher("BR"));
+        }
+
+        textViewOcultoTel1 = (TextView) activity.findViewById(R.id.tvOcultoTel1Id);
+        textViewOcultoTel2 = (TextView) activity.findViewById(R.id.tvOcultoTel2Id);
+        fieldEmail = (EditText) activity.findViewById(R.id.etEmail);
+        fieldCnpj = (EditText) activity.findViewById(R.id.etCnpj);
+        fieldInscricaoEstadual = (EditText) activity.findViewById(R.id.etInscricaoEstadual);
+        fieldStreet = (EditText) activity.findViewById(R.id.etRua);
+        fieldNumber = (EditText) activity.findViewById(R.id.etNumeroRua);
+        fieldBairro = (EditText) activity.findViewById(R.id.etBairro);
+        comboUf = (Spinner) activity.findViewById(R.id.comboUF);
+        comboCidade = (Spinner) activity.findViewById(R.id.comboCidade);
+        fieldComplemento = (EditText) activity.findViewById(R.id.etComplemento);
+        fieldObs = (EditText) activity.findViewById(R.id.etObs);
+        imgVStatus = (ImageView) activity.findViewById(R.id.imgVStatus);
+        fieldRg = (EditText) activity.findViewById(R.id.etRg);
+        fieldOrgaoRg = (EditText) activity.findViewById(R.id.etOrgaoRg);
+        fieldOcultoDtCadastro = (TextView) activity.findViewById(R.id.tvOcultoDtCadastro);
+        cliente = new Cliente();
+
+    }
+
+    public Cliente getCliente() {
+
+        FdvApplication app = FdvApplication.getInstance();
+
+        if (app.getCliente() != null) {
+            if(app.getCliente().getLatitude() != 0 && app.getCliente().getLongitude() != 0) {
+                cliente.setLatitude(app.getCliente().getLatitude());
+                cliente.setLongitude(app.getCliente().getLongitude());
+            }
+        }
+
+        cliente.setNomeFantasia(fieldNameFantasia.getText().toString().trim().toUpperCase());
+        cliente.setNome(fieldName.getText().toString().trim().toUpperCase());
+        cliente.setEmail(fieldEmail.getText().toString().trim().toLowerCase());
+        cliente.setCnpj(fieldCnpj.getText().toString().trim());
+        cliente.setInscricacaoEstadual(fieldInscricaoEstadual.getText().toString().trim());
+        cliente.setRg(fieldRg.getText().toString().trim());
+        cliente.setOrgaoExpedidorRg(fieldOrgaoRg.getText().toString().trim().toUpperCase());
+        cliente.setDtCadastro(fieldOcultoDtCadastro.getText().toString());
+        cliente.setObs(fieldObs.getText().toString().toUpperCase());
+        cliente.setVendedorId(app.getVendedor().getId());
+
+        //Endereco
+        List<Endereco> enderecos = new ArrayList<>();
+
+        //Long id, String nome,String ufSigla, String ufNom
+        //Cidade city = new Cidade(Long.parseLong("21"),"São Paulo","SP","São Paulo");
+        Cidade city = (Cidade) comboCidade.getSelectedItem();
+
+        //Cliente cliente, Cidade cidade, String numero, String bairro, String rua, String complemento
+        Endereco end = new Endereco(cliente, city,
+                fieldNumber.getText().toString().trim(),
+                fieldBairro.getText().toString().trim().toUpperCase(),
+                fieldStreet.getText().toString().trim().toUpperCase(),
+                fieldComplemento.getText().toString().trim().toUpperCase());
+        enderecos.add(end);
+        cliente.setEnderecos(enderecos);
+
+        //Telefones
+        List<Telefone> telefones = new ArrayList<>();
+
+        String stringOcultoTel1 = textViewOcultoTel1.getText().toString();
+        String stringOcultoTel2 = textViewOcultoTel2.getText().toString();
+        Long idTel1 = null;
+        Long idTel2 = null;
+        if (!stringOcultoTel1.equals("") && !stringOcultoTel2.equals("")) {
+            idTel1 = Long.parseLong(stringOcultoTel1);
+            idTel2 = Long.parseLong(stringOcultoTel2);
+        }
+
+        Telefone tel1 = new Telefone(idTel1, cliente, fieldFone1.getText().toString().trim());
+        telefones.add(tel1);
+        Telefone tel2 = new Telefone(idTel2, cliente, fieldFone2.getText().toString().trim());
+        telefones.add(tel2);
+        cliente.setTelefones(telefones);
+        //Novo ou editado aqui é sempre 1
+        cliente.setStatus(ClienteStatusEnum.ALTERADO.getStatus());
+        return cliente;
+
+    }
+
+    public void preecherActivity(Cliente cliente) {
+
+        fieldNameFantasia.setText(cliente.getNomeFantasia());
+        fieldName.setText(cliente.getNome());
+        fieldRg.setText(cliente.getRg());
+        fieldOrgaoRg.setText(cliente.getOrgaoExpedidorRg());
+        fieldOcultoDtCadastro.setText(cliente.getDtCadastro());
+        fieldObs.setText(cliente.getObs());
+
+        if (cliente.getTelefones() != null) {
+            if (cliente.getTelefones().size() > 0) {
+                //Telefones 1 e 2
+                for (int i = 0; i < cliente.getTelefones().size(); i++) {
+                    Telefone tel = cliente.getTelefones().get(i);
+
+                    EditText fone;
+                    TextView textViewOculto;
+                    if (i % 2 == 0) {
+                        fone = fieldFone1;
+                        textViewOculto = textViewOcultoTel1;
+
+                    } else {
+                        fone = fieldFone2;
+                        textViewOculto = textViewOcultoTel2;
+                    }
+
+                    fone.setText(tel.getNumero());
+                    textViewOculto.setText(tel.getId().toString());
+                }
+            }
+        }
+
+        fieldEmail.setText(cliente.getEmail());
+        fieldCnpj.setText(cliente.getCnpj());
+        fieldInscricaoEstadual.setText(cliente.getInscricacaoEstadual());
+
+        //Endereco
+        List<Endereco> enderecos = new ArrayList<>();
+        enderecos = cliente.getEnderecos();
+
+        if (enderecos != null) {
+            if (enderecos.size() > 0) {
+                Endereco endereco = enderecos.get(0);
+                fieldStreet.setText(endereco.getRua());
+                fieldNumber.setText(endereco.getNumero());
+                fieldBairro.setText(endereco.getBairro());
+                fieldComplemento.setText(endereco.getComplemento());
+            }
+        }
+    }
+
+
+    public String validaCampos() {
+        String nomeFantasia = fieldNameFantasia.getText().toString().trim();
+        String nome = fieldName.getText().toString().trim();
+        String email = fieldEmail.getText().toString().trim();
+        String telefone = fieldFone1.getText().toString().trim();
+        String rua = fieldStreet.getText().toString().trim();
+        String numero = fieldNumber.getText().toString().trim();
+        String bairro = fieldBairro.getText().toString().trim();
+        Cidade cidade = (Cidade) comboCidade.getSelectedItem();
+        Uf uf = (Uf) comboUf.getSelectedItem();
+        String cnpj = fieldCnpj.getText().toString().trim();
+        String rg = fieldRg.getText().toString().trim();
+
+        if (rg.length() > 0) {
+            String orgaoRg = fieldOrgaoRg.getText().toString().trim();
+            if (orgaoRg.equals("")) {
+               return "Obrigatório o orgão expedidor Ex: SSP/MT";
+            }
+        }
+
+        if (cnpj.equals("")) {
+            return "O CNPJ/CPF é obrigatório";
+        } else if (nomeFantasia.equals("")) {
+            return "Obrigatório o nome de Fantasia";
+
+        }
+//        else if (email.equals("")) {
+//            return "Obrigatório um email";
+//
+//        }
+        else if (telefone.equals("")) {
+            return "Obrigatório um telefone";
+        } else if (nome.equals("")) {
+            return "Obrigatório um nome";
+        } else if (rua.equals("")) {
+            return "Digite a rua";
+        } else if (numero.equals("")) {
+            return "Digite um número";
+        } else if (bairro.equals("")) {
+            return "Digite o Bairro";
+        } else if (cidade.getId() == 0) {
+            return "Escolha a Cidade";
+        } else if (uf.getId() == 0) {
+            return "Escolha o estado";
+        }
+        return "ok";
+    }
+
+    public void limparForm() {
+        fieldOcultoDtCadastro.setText("");
+        fieldOrgaoRg.setText("");
+        fieldRg.setText("");
+        fieldNameFantasia.setText("");
+        fieldName.setText("");
+        fieldFone1.setText("");
+        textViewOcultoTel1.setText("");
+        textViewOcultoTel2.setText("");
+        fieldFone2.setText("");
+        fieldEmail.setText("");
+        fieldInscricaoEstadual.setText("");
+        fieldStreet.setText("");
+        fieldNumber.setText("");
+        fieldBairro.setText("");
+        fieldComplemento.setText("");
+        fieldObs.setText("");
+    }
+}

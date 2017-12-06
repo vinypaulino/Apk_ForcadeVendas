@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "C:\\Users\\Alonso\\AndroidStudioProjects\\ForcaDeVenda\\app\\build\\intermediates\\res\\merged\\debug\\raw\\ufs.json",
+        "source": "C:\\Users\\Alonso\\AndroidStudioProjects\\ForcaDeVenda\\app\\src\\main\\res\\raw\\ufs.json"
+    },
+    {
+        "merged": "C:\\Users\\Alonso\\AndroidStudioProjects\\ForcaDeVenda\\app\\build\\intermediates\\res\\merged\\debug\\raw\\ufs_bak.json",
+        "source": "C:\\Users\\Alonso\\AndroidStudioProjects\\ForcaDeVenda\\app\\src\\main\\res\\raw\\ufs_bak.json"
+    },
+    {
+        "merged": "C:\\Users\\Alonso\\AndroidStudioProjects\\ForcaDeVenda\\app\\build\\intermediates\\res\\merged\\debug\\raw\\gtm_analytics",
+        "source": "C:\\Users\\Alonso\\AndroidStudioProjects\\ForcaDeVenda\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-analytics-impl\\9.0.2\\res\\raw\\gtm_analytics"
+    }
+]

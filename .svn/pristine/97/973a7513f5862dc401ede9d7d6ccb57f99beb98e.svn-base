@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "D:\\AndroidStudio\\Apk_ForcadeVendas\\app\\build\\intermediates\\res\\merged\\debug\\layout-v20\\watch_card_content.xml",
+        "source": "D:\\AndroidStudio\\Apk_ForcadeVendas\\app\\build\\intermediates\\exploded-aar\\com.google.android.support\\wearable\\1.1.0\\res\\layout-v20\\watch_card_content.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudio\\Apk_ForcadeVendas\\app\\build\\intermediates\\res\\merged\\debug\\layout-v20\\confirmation_activity_layout.xml",
+        "source": "D:\\AndroidStudio\\Apk_ForcadeVendas\\app\\build\\intermediates\\exploded-aar\\com.google.android.support\\wearable\\1.1.0\\res\\layout-v20\\confirmation_activity_layout.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudio\\Apk_ForcadeVendas\\app\\build\\intermediates\\res\\merged\\debug\\layout-v20\\dismiss_overlay.xml",
+        "source": "D:\\AndroidStudio\\Apk_ForcadeVendas\\app\\build\\intermediates\\exploded-aar\\com.google.android.support\\wearable\\1.1.0\\res\\layout-v20\\dismiss_overlay.xml"
+    }
+]

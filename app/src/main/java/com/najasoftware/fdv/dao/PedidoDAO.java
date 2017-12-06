@@ -1,0 +1,388 @@
+package com.najasoftware.fdv.dao;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteException;
+import android.support.annotation.NonNull;
+import android.util.Log;
+
+import com.najasoftware.fdv.FdvApplication;
+import com.najasoftware.fdv.model.Cliente;
+import com.najasoftware.fdv.model.CrudEnum;
+import com.najasoftware.fdv.model.Item;
+import com.najasoftware.fdv.model.Pedido;
+import com.najasoftware.fdv.model.PedidoStatusEnum;
+import com.najasoftware.fdv.util.Util;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by Lemoel Marques - NajaSoftware on 09/03/2016.
+ * lemoel@gmail.com
+ */
+public class PedidoDAO extends BancoDAO {
+
+    private final String TABLE = "PEDIDOS";
+    private final String ID = "_id";
+    private final String CLIENTE_CNPJ = "CLIENTE_CNPJ";
+    private final String STATUS = "STATUS";
+    private final String DT_VENDA = "DT_VENDA";
+    private final String DT_ENVIO_SERVIDOR = "DT_ENVIO_SERVIDOR";
+    private final String VENDEDOR_ID = "VENDEDOR_ID";
+    private final String TOTAL_SEM_DESCONTO = "TOTAL_SEM_DESCONTO";
+    private final String TOTAL_COM_DESCONTO = "TOTAL_COM_DESCONTO";
+    private final String DESCONTO = "DESCONTO";
+    private final String FORMA_PGTO_ID = "FORMA_PGTO_ID";
+    private final String ID_CLIENTE_EMPIRES = "ID_CLIENTE_EMPIRES";
+    private final String OBS = "OBS";
+    private Context context;
+
+    public PedidoDAO(Context context) {
+        super(context);
+        this.context = context;
+    }
+
+    public Pedido getPedido(Cliente cliente, PedidoStatusEnum status) throws SQLiteException {
+
+        String where = CLIENTE_CNPJ + " = ?";
+        where += " and " + STATUS + " = ? ";
+
+        String args[] = new String[]{cliente.getCnpj(), Integer.toString(status.getStatus())};
+
+        try {
+            Cursor c = getDb().query(TABLE, null, where, args, null, null, null);
+            Pedido pedido = null;
+            if (c.moveToNext()) {
+                pedido = new Pedido();
+                pedido.setId(c.getLong(c.getColumnIndex(ID)));
+                pedido.setCliente(new ClienteDAO(context).getCliente(c.getString(c.getColumnIndex(CLIENTE_CNPJ))));
+                pedido.setVendedor(new VendedorDAO(context).getVendedor(c.getLong(c.getColumnIndex(VENDEDOR_ID))));
+                pedido.setObs(c.getString(c.getColumnIndex(OBS)));
+                pedido.setStatus(c.getInt(c.getColumnIndex(STATUS)));
+                pedido.setDataVenda(c.getString(c.getColumnIndex(DT_VENDA)));
+                pedido.setTotalSemDesconto(c.getDouble(c.getColumnIndex(TOTAL_SEM_DESCONTO)));
+                pedido.setTotalComDesconto(c.getDouble(c.getColumnIndex(TOTAL_COM_DESCONTO)));
+                pedido.setDesconto(c.getDouble(c.getColumnIndex(DESCONTO)));
+                pedido.setFormaPgto(new FormaPgtoDAO(context).getFormasPgto(c.getLong(c.getColumnIndex(FORMA_PGTO_ID))));
+            }
+            c.close();
+            return pedido;
+        } finally {
+            getDb().close();
+        }
+    }
+
+    public Pedido getPedido(Pedido pedido, PedidoStatusEnum status) throws SQLiteException {
+
+        Log.e("Erro :", "getPedido -> Vendedor : " + pedido.getCliente().getCnpj());
+        List<Pedido> pedidos = new ArrayList<Pedido>();
+
+        String where = ID + " = ?";
+        where += " and " + STATUS + " = ? ";
+        String args[] = new String[]{pedido.getId().toString(), Integer.toString(status.getStatus())};
+
+        try {
+            Cursor c = getDb().query(TABLE, null, where, args, null, null, null);
+            pedidos = toList(c);
+            c.close();
+            return pedidos.get(0);
+        } finally {
+            getDb().close();
+        }
+
+    }
+
+    public List<Pedido> getPedido(PedidoStatusEnum status) throws SQLiteException {
+
+        String where = STATUS + " = ?";
+        where += " and " + FORMA_PGTO_ID + " != 0 ";
+
+        String args[] = new String[]{Integer.toString(status.getStatus())};
+
+        try {
+            Cursor c = getDb().query(TABLE, null, where, args, null, null, null);
+            List<Pedido> pedidos = toList(c);
+            c.close();
+
+            for (Pedido p : pedidos) {
+                ItemDAO itemDAO = new ItemDAO(context);
+                List<Item> itens = itemDAO.getItens(p.getId());
+                p.setItens(itens);
+            }
+
+            return pedidos;
+        } finally {
+            getDb().close();
+        }
+
+    }
+
+    public Pedido getPedido(Long pedidoId) throws SQLiteException {
+
+        String where = ID + " = ?";
+        String args[] = new String[]{pedidoId.toString()};
+
+        try {
+            Cursor c = getDb().query(TABLE, null, where, args, null, null, null);
+            Pedido pedido = new Pedido();
+            if (c.moveToNext()) {
+                pedido.setId(c.getLong(c.getColumnIndex(ID)));
+                pedido.setCliente(new ClienteDAO(context).getCliente(c.getString(c.getColumnIndex(CLIENTE_CNPJ))));
+                pedido.setVendedor(new VendedorDAO(context).getVendedor(c.getLong(c.getColumnIndex(VENDEDOR_ID))));
+                pedido.setObs(c.getString(c.getColumnIndex(OBS)));
+                pedido.setStatus(c.getInt(c.getColumnIndex(STATUS)));
+                pedido.setDataVenda(c.getString(c.getColumnIndex(DT_VENDA)));
+                pedido.setTotalSemDesconto(c.getDouble(c.getColumnIndex(TOTAL_SEM_DESCONTO)));
+                pedido.setTotalComDesconto(c.getDouble(c.getColumnIndex(TOTAL_COM_DESCONTO)));
+                pedido.setDesconto(c.getDouble(c.getColumnIndex(DESCONTO)));
+                pedido.setFormaPgto(new FormaPgtoDAO(context).getFormasPgto(c.getLong(c.getColumnIndex(FORMA_PGTO_ID))));
+            }
+            c.close();
+            return pedido;
+        } finally {
+            getDb().close();
+        }
+    }
+
+    public void excluir(Pedido pedido) throws SQLiteException {
+
+        String[] params = {pedido.getId().toString()};
+        getDb().beginTransaction();
+        try {
+            getDb().delete("ITENS", " PEDIDO_ID = ?", params);
+            getDb().delete(TABLE, ID + " = ? ", params);
+            getDb().setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            getDb().endTransaction();
+            getDb().close();
+        }
+    }
+
+    /*
+    @param PedidoStatusEnum status dos pedidos a serem apagados
+    Apaga todos itens dos pedido e o pedido de um determinado status
+    @author Lemoel Marques
+     */
+    public void excluirPedidos(PedidoStatusEnum status) {
+
+        String[] params = {Integer.toString(status.getStatus())};
+        String deleteItens = "DELETE FROM ITENS WHERE PEDIDO_ID IN (SELECT _id FROM PEDIDOS WHERE STATUS IN (" + status.getStatus() + "));";
+        String deletePedido = "DELETE FROM PEDIDOS WHERE STATUS IN (" + status.getStatus() + ");";
+        getDb().beginTransaction();
+        try {
+            getDb().execSQL(deleteItens);
+            getDb().execSQL(deletePedido);
+            getDb().setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            getDb().endTransaction();
+            getDb().close();
+        }
+
+    }
+
+    public void statusTo(List<Pedido> pedidos, PedidoStatusEnum pedidoStatusEnum) throws SQLiteException {
+
+        ContentValues dados = new ContentValues();
+        dados.put(STATUS, pedidoStatusEnum.getStatus());
+
+        if (pedidoStatusEnum.getStatus() == PedidoStatusEnum.ENVIADO.getStatus()) {
+            dados.put(DT_ENVIO_SERVIDOR, new Util().dataAtual());
+        }
+
+        try {
+            for (Pedido pedido : pedidos) {
+                String[] params = {pedido.getId().toString()};
+                getDb().update(TABLE, dados, " _id = ? ", params);
+            }
+        } finally {
+            getDb().close();
+        }
+
+    }
+
+    public List<Pedido> toList(Cursor c) {
+
+        List<Pedido> pedidos = new ArrayList<>();
+        if (c.moveToNext()) {
+            do {
+                Pedido pedido = new Pedido();
+                pedido.setId(c.getLong(c.getColumnIndex(ID)));
+                pedido.setCliente(new ClienteDAO(context).getCliente(c.getString(c.getColumnIndex(CLIENTE_CNPJ))));
+                pedido.setVendedor(new VendedorDAO(context).getVendedor(c.getLong(c.getColumnIndex(VENDEDOR_ID))));
+                pedido.setObs(c.getString(c.getColumnIndex(OBS)));
+                pedido.setDataEnvioServidor(c.getString(c.getColumnIndex(DT_ENVIO_SERVIDOR)));
+                pedido.setStatus(c.getInt(c.getColumnIndex(STATUS)));
+                pedido.setDataVenda(c.getString(c.getColumnIndex(DT_VENDA)));
+                pedido.setTotalSemDesconto(c.getDouble(c.getColumnIndex(TOTAL_SEM_DESCONTO)));
+                pedido.setTotalComDesconto(c.getDouble(c.getColumnIndex(TOTAL_COM_DESCONTO)));
+                pedido.setDesconto(c.getDouble(c.getColumnIndex(DESCONTO)));
+                pedido.setFormaPgto(new FormaPgtoDAO(context).getFormasPgto(c.getLong(c.getColumnIndex(FORMA_PGTO_ID))));
+                pedidos.add(pedido);
+            } while (c.moveToNext());
+        }
+        return pedidos;
+    }
+
+    public Long gravar(Pedido pedido) {
+        ContentValues dados = new ContentValues();
+        dados = pegaDadosPedido(pedido);
+        Long id = getDb().insert(TABLE, null, dados);
+        if (id > 0) {
+            ItemDAO itemDAO = new ItemDAO(context);
+            List<Item> itens = pedido.getItens();
+            Item item = itens.get(0);
+            item.setPedido(new Pedido(id));
+
+            //Grava os itens do pedido
+            itemDAO.gravar(item);
+            itemDAO.close();
+
+            //Atualiza status do cliente para alterado (1)
+            ClienteDAO clienteDAO = new ClienteDAO(context);
+            clienteDAO.updateStatus(pedido.getCliente());
+        }
+        return id;
+    }
+
+
+    public Long udpate(Pedido pedido, Enum crudEnum) {
+
+        ItemDAO itemDAO = new ItemDAO(context);
+        List<Item> itens = pedido.getItens();
+        Item item = itens.get(0);
+        item.setPedido(pedido);
+
+        //Novo item do pedido
+        if (crudEnum == CrudEnum.NOVO_ITEM) {
+            itemDAO.gravar(item);
+            itemDAO.close();
+        } else if (crudEnum == CrudEnum.EDITAR_ITEM) {//Editando um item do pedido
+            itemDAO.update(item);
+            itemDAO.close();
+        } else if (crudEnum == CrudEnum.EXCLUIR_ITEM) {
+            itemDAO.excluir(item);
+        }
+
+        pedido = updateTotaisPedido(pedido);
+
+        ContentValues dados = new ContentValues();
+        dados = pegaDadosPedido(pedido);
+        String[] params = {pedido.getId().toString()};
+        getDb().update(TABLE, dados, " _id = ? ", params);
+
+        return pedido.getId();
+    }
+
+    private Pedido updateTotaisPedido(Pedido pedido) {
+        //Fazendo os calculos referentes aos totais do pedido
+        String sql = " SELECT SUM(TOTAL_SEM_DESCONTO) TOTAL_SEM_DESCONTO, " +
+                "       SUM(TOTAL_COM_DESCONTO) TOTAL_COM_DESCONTO, " +
+                "       SUM(DESCONTO) DESCONTO_TOTAL " +
+                " FROM ITENS WHERE PEDIDO_ID = " + pedido.getId() + " ; ";
+
+        Cursor c = getDb().rawQuery(sql, null);
+        double totalSemDesconto = 0.0, totalComDesconto = 0.0, descontoTotal = 0.0;
+
+        if (c != null) {
+            try {
+                if (c.moveToFirst()) {
+                    totalSemDesconto = c.getDouble(c.getColumnIndex("TOTAL_SEM_DESCONTO"));
+                    totalComDesconto = c.getDouble(c.getColumnIndex("TOTAL_COM_DESCONTO"));
+                    descontoTotal = c.getDouble(c.getColumnIndex("DESCONTO_TOTAL"));
+                }
+            } finally {
+                c.close();
+            }
+        }
+
+        pedido.setTotalSemDesconto(totalSemDesconto);
+        pedido.setTotalComDesconto(totalComDesconto);
+        pedido.setDesconto(descontoTotal);
+
+        return pedido;
+    }
+
+
+    @NonNull
+    private ContentValues pegaDadosPedido(Pedido pedido) {
+        ContentValues dados = new ContentValues();
+
+        if (pedido.getId() != null) dados.put(ID, pedido.getId());
+        dados.put(CLIENTE_CNPJ, pedido.getCliente().getCnpj().toString().trim());
+        dados.put(VENDEDOR_ID, pedido.getVendedor().getId().toString().trim());
+        dados.put(OBS, pedido.getObs());
+        dados.put(STATUS, pedido.getStatus());
+        dados.put(DT_VENDA, pedido.getDataVenda());
+        dados.put(TOTAL_SEM_DESCONTO, pedido.getTotalSemDesconto());
+        dados.put(TOTAL_COM_DESCONTO, pedido.getTotalComDesconto());
+        dados.put(DESCONTO, pedido.getDesconto());
+
+        if (pedido.getFormaPgto() != null) {
+            dados.put(FORMA_PGTO_ID, pedido.getFormaPgto().getId());
+        }
+
+        return dados;
+    }
+
+    public void excluirItem(Item item) {
+
+        ItemDAO itemDAO = new ItemDAO(context);
+        itemDAO.excluir(item);
+
+        Pedido pedido = updateTotaisPedido(item.getPedido());
+
+        ContentValues dados = new ContentValues();
+        dados.put(TOTAL_SEM_DESCONTO, pedido.getTotalSemDesconto());
+        dados.put(TOTAL_COM_DESCONTO, pedido.getTotalComDesconto());
+        dados.put(DESCONTO, pedido.getDesconto());
+
+        String[] params = {pedido.getId().toString()};
+        getDb().update(TABLE, dados, " _id = ? ", params);
+
+    }
+
+
+    public int salvarPedido(Pedido pedido) {
+        ContentValues dados = new ContentValues();
+        dados.put(FORMA_PGTO_ID, pedido.getFormaPgto().getId());
+        dados.put(OBS, pedido.getObs());
+        String[] params = {pedido.getId().toString()};
+        int retorno = getDb().update(TABLE, dados, " _id = ? ", params);
+        getDb().close();
+        return retorno;
+    }
+
+    public List<Pedido> pedidos(PedidoStatusEnum status) {
+
+        FdvApplication app = FdvApplication.getInstance();
+
+        ItemDAO itemDAO = new ItemDAO(context);
+        List<Pedido> pedidos;
+
+        String where = STATUS + " = ? AND VENDEDOR_ID = ? ";
+
+        String args[] = new String[]{Integer.toString(status.getStatus()), app.getVendedor().getId().toString()};
+
+        try {
+            Cursor c = getDb().query(TABLE, null, where, args, null, null, null);
+            pedidos = toList(c);
+
+            for (Pedido p : pedidos) {
+                //ItemDAO itemDAO = new ItemDAO(context);
+                List<Item> itens = itemDAO.getItens(p.getId());
+                p.setItens(itens);
+            }
+
+            c.close();
+        } finally {
+            getDb().close();
+        }
+        return pedidos;
+    }
+}

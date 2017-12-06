@@ -1,0 +1,215 @@
+package com.najasoftware.fdv.task;
+
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.database.sqlite.SQLiteException;
+import android.os.AsyncTask;
+import android.util.Log;
+import android.widget.Toast;
+
+import com.najasoftware.fdv.FdvApplication;
+import com.najasoftware.fdv.dao.ClienteDAO;
+import com.najasoftware.fdv.dao.ItemDAO;
+import com.najasoftware.fdv.dao.PedidoDAO;
+import com.najasoftware.fdv.model.Cliente;
+import com.najasoftware.fdv.model.ClienteStatusEnum;
+import com.najasoftware.fdv.model.Credencial;
+import com.najasoftware.fdv.model.Item;
+import com.najasoftware.fdv.model.Pedido;
+import com.najasoftware.fdv.model.PedidoStatusEnum;
+import com.najasoftware.fdv.service.ClienteService;
+import com.najasoftware.fdv.service.ConsultaCnpjService;
+import com.najasoftware.fdv.service.PedidoService;
+import com.najasoftware.fdv.util.FtpUtil;
+import com.najasoftware.fdv.util.Util;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+/**
+ * Created by Lemoel Marques - NajaSoftware on 08/03/2016.
+ * lemoel@gmail.com
+ */
+public class EnviaPedidosTask extends AsyncTask<Object, Object, String> {
+
+    private final Context context;
+    private PedidoStatusEnum status = null;
+    private ProgressDialog progressDialog;
+    private Pedido pedido = null;
+    private String cnpj;
+
+    public EnviaPedidosTask(Context context, PedidoStatusEnum status) {
+        this.context = context;
+        this.status = status;
+    }
+
+    public EnviaPedidosTask(Context context, Pedido pedido, PedidoStatusEnum status) {
+        this.context = context;
+        this.pedido = pedido;
+        this.status = status;
+    }
+
+    @Override
+    protected void onPreExecute() {
+        progressDialog = ProgressDialog.show(context, "Aguarde...", "Enviando pedidos!!!");
+    }
+
+    @Override
+    protected String doInBackground(Object[] params) {
+        return enviaPedido(this.pedido, this.status);
+    }
+
+    @Override
+    protected void onPostExecute(String s) {
+        progressDialog.dismiss();
+        Toast.makeText(context, s, Toast.LENGTH_SHORT).show();
+    }
+
+    /*
+    @param Pedido se null envia todos os pedidos com status
+     */
+    private String enviaPedido(Pedido pedido, PedidoStatusEnum status) {
+
+        //Conectar ao servidor e enviar o arquivo.
+        FtpUtil ftpUtil = new FtpUtil(context);
+        boolean conectado;
+        conectado = ftpUtil.conectar(null);
+
+        getCnpj();
+
+        //Verificando o servidor primeiro, so gerar o arquivo caso
+        //o servidor esteja configurado
+        if (conectado) {
+
+            String msg = "";
+            List<Pedido> pedidos = new ArrayList<>();
+            List<Item> itens = null;
+            List<Cliente> clientes = new ArrayList<>();
+            Util util = new Util();
+
+            PedidoDAO pedidoDAO = new PedidoDAO(context);
+            ItemDAO itemDAO = new ItemDAO(context);
+            ClienteDAO clienteDAO = new ClienteDAO(context);
+
+            FdvApplication app = FdvApplication.getInstance();
+
+            try {
+
+                /* Parte da string do nome do arquivo é completado dentro do metod toJson
+                   Os arquivos referente a pedido, é gerado um arquivo por pedido. Uma
+                   solicitação do Aécio, 18/07/2016
+                 */
+                String nomeArquivoPedido;
+
+                /*
+                    No caso dos clientes, é gerado apenas um arquivo para todos os clientes que
+                    serão enviados;
+                 */
+                String nomeArquivoClientes = "clientes_" + app.getVendedor().getId().toString() + "_" + util.dataHora() + ".json";
+
+                boolean gerarJsonCliente = false;
+                PedidoService pedidoService = new PedidoService(context);
+                ClienteService clienteService = new ClienteService(context);
+                Set<String> nomesDosArquivos = new HashSet<>();
+
+
+                if (pedido != null) {
+
+                    nomeArquivoPedido = "pedidos_" + pedido.getId() + app.getVendedor().getId().toString() + "_" + util.dataHora() + ".json";
+
+                    //Pedido sera gerado junto com itens
+                    pedido = pedidoDAO.getPedido(pedido, status);
+                    itens = itemDAO.getItens(pedido);
+                    pedido.setItens(itens);
+
+                    //Adicionando na lista para gerar o JSON
+                    pedidos.add(pedido);
+
+                    nomesDosArquivos = pedidoService.toJson(nomeArquivoPedido, pedidos);
+
+                    clientes = clienteDAO.getClientes(ClienteStatusEnum.ALTERADO);
+
+                    if (clientes.size() > 0) {
+                        clienteService = new ClienteService(context);
+                        gerarJsonCliente = clienteService.gerarJson(nomeArquivoClientes, clientes);
+                    }
+
+                } else {
+
+                    nomeArquivoPedido = "pedidos_" + app.getVendedor().getId().toString() + "_" + util.dataHora();
+
+                    pedidos = pedidoDAO.getPedido(status);
+
+                    if (pedidos.size() > 0) {
+                        nomesDosArquivos = pedidoService.toJson(nomeArquivoPedido, pedidos);
+                    }
+
+                    clientes = clienteDAO.getClientes(ClienteStatusEnum.ALTERADO);
+                    if (clientes.size() > 0) {
+                        gerarJsonCliente = clienteService.gerarJson(nomeArquivoClientes, clientes);
+                    }
+                }
+
+                if (nomesDosArquivos.size() > 0) {
+
+                    boolean enviaPedidos = false;
+                    boolean enviaClientes = false;
+
+                    //Percorrendo o SET para pegar o nome dos arquivo e enviar
+                    for (String nome : nomesDosArquivos ) {
+                        enviaPedidos = ftpUtil.upload(nome,"/"+ cnpj + "/" + nome);
+                        pedidoService.delete(nome);
+                    }
+
+                    if (clientes.size() > 0 && gerarJsonCliente == true) {
+                        enviaClientes = ftpUtil.upload(nomeArquivoClientes,"/"+ cnpj + "/" + nomeArquivoClientes);
+                        clienteService.delete(nomeArquivoClientes);
+                    }
+
+                    if (enviaPedidos == true) {
+                        boolean pedidoStatus = pedidoService.delete(nomeArquivoPedido);
+                        boolean clientesStatus = clienteService.delete(nomeArquivoClientes);
+                        msg += " Pedidos e Clientes enviados com sucesso!\n";
+                        pedidoDAO.statusTo(pedidos, PedidoStatusEnum.ENVIADO);
+                        clienteDAO.statusTo(clientes, ClienteStatusEnum.DEFAULT);
+                    } else {
+                        msg += " Erro ao enviar pedidos e clientes!\n";
+                    }
+
+                } else {
+                    msg = "Não havia pedidos para envio";
+                }
+
+            } catch (SQLiteException run) {
+                Log.e("Banco de dados: ", run.getMessage());
+                msg = "Erro no banco de dados local";
+            }
+
+            ftpUtil.desconectar();
+            return msg;
+
+        } else {
+            return "Configure o dados do servidor no menu de configurações - 001";
+        }
+    }
+
+    private void getCnpj() {
+        //Ler os dados do arquivo JSON
+        List<Credencial> credencialList = null;
+        try {
+            credencialList = ConsultaCnpjService.getDadosIniciais(context);
+            //Se tiver credenciais para importar
+            if (credencialList != null) {
+                //Que veio do arquivo baixado
+                Credencial credDoArquivoJson = credencialList.get(0);
+                cnpj = credDoArquivoJson.getCnpj();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}

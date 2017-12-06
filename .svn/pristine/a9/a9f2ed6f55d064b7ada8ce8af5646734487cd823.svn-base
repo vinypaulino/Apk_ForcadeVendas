@@ -1,0 +1,46 @@
+[
+    {
+        "merged": "C:\\Users\\Alonso\\AndroidStudioProjects\\ForcaDeVenda\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_activity_add_item_pedido.xml",
+        "source": "C:\\Users\\Alonso\\AndroidStudioProjects\\ForcaDeVenda\\app\\src\\main\\res\\menu\\menu_activity_add_item_pedido.xml"
+    },
+    {
+        "merged": "C:\\Users\\Alonso\\AndroidStudioProjects\\ForcaDeVenda\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_busca_categoria.xml",
+        "source": "C:\\Users\\Alonso\\AndroidStudioProjects\\ForcaDeVenda\\app\\src\\main\\res\\menu\\menu_busca_categoria.xml"
+    },
+    {
+        "merged": "C:\\Users\\Alonso\\AndroidStudioProjects\\ForcaDeVenda\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_activity_cliente_location.xml",
+        "source": "C:\\Users\\Alonso\\AndroidStudioProjects\\ForcaDeVenda\\app\\src\\main\\res\\menu\\menu_activity_cliente_location.xml"
+    },
+    {
+        "merged": "C:\\Users\\Alonso\\AndroidStudioProjects\\ForcaDeVenda\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_add_item_pedido.xml",
+        "source": "C:\\Users\\Alonso\\AndroidStudioProjects\\ForcaDeVenda\\app\\src\\main\\res\\menu\\menu_add_item_pedido.xml"
+    },
+    {
+        "merged": "C:\\Users\\Alonso\\AndroidStudioProjects\\ForcaDeVenda\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_config.xml",
+        "source": "C:\\Users\\Alonso\\AndroidStudioProjects\\ForcaDeVenda\\app\\src\\main\\res\\menu\\menu_config.xml"
+    },
+    {
+        "merged": "C:\\Users\\Alonso\\AndroidStudioProjects\\ForcaDeVenda\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_pedido.xml",
+        "source": "C:\\Users\\Alonso\\AndroidStudioProjects\\ForcaDeVenda\\app\\src\\main\\res\\menu\\menu_pedido.xml"
+    },
+    {
+        "merged": "C:\\Users\\Alonso\\AndroidStudioProjects\\ForcaDeVenda\\app\\build\\intermediates\\res\\merged\\debug\\menu\\nav_drawer_menu_fdv.xml",
+        "source": "C:\\Users\\Alonso\\AndroidStudioProjects\\ForcaDeVenda\\app\\src\\main\\res\\menu\\nav_drawer_menu_fdv.xml"
+    },
+    {
+        "merged": "C:\\Users\\Alonso\\AndroidStudioProjects\\ForcaDeVenda\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_scrolling.xml",
+        "source": "C:\\Users\\Alonso\\AndroidStudioProjects\\ForcaDeVenda\\app\\src\\main\\res\\menu\\menu_scrolling.xml"
+    },
+    {
+        "merged": "C:\\Users\\Alonso\\AndroidStudioProjects\\ForcaDeVenda\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_main.xml",
+        "source": "C:\\Users\\Alonso\\AndroidStudioProjects\\ForcaDeVenda\\app\\src\\main\\res\\menu\\menu_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Alonso\\AndroidStudioProjects\\ForcaDeVenda\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_form_cliente_salvar.xml",
+        "source": "C:\\Users\\Alonso\\AndroidStudioProjects\\ForcaDeVenda\\app\\src\\main\\res\\menu\\menu_form_cliente_salvar.xml"
+    },
+    {
+        "merged": "C:\\Users\\Alonso\\AndroidStudioProjects\\ForcaDeVenda\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_busca_produto.xml",
+        "source": "C:\\Users\\Alonso\\AndroidStudioProjects\\ForcaDeVenda\\app\\src\\main\\res\\menu\\menu_busca_produto.xml"
+    }
+]

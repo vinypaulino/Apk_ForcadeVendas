@@ -1,0 +1,103 @@
+package com.najasoftware.fdv.model;
+
+import java.io.Serializable;
+
+/**
+ * Created by Lemoel on 09/03/2016.
+ * Update by Viny on 29/11/2016.
+ */
+@org.parceler.Parcel
+public class Item implements Serializable {
+
+    private Long id;
+    private String nome;
+    private Pedido pedido;
+    private Produto produto;
+    private Double precoSugerido;
+    private Double desconto;
+    private Double qtde = Double.valueOf(1);
+    private Double totalComDesconto;
+    private Double totalSemDesconto;
+    private Double descontoPorcentagem;
+
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+
+    public Double getPrecoSugerido() {
+        return precoSugerido;
+    }
+
+    public void setPrecoSugerido(Double precoSugerido) {
+        this.precoSugerido = precoSugerido;
+    }
+
+    public Double getDesconto() {
+        return desconto;
+    }
+
+    public void setDesconto(Double desconto) {
+        this.desconto = desconto;
+    }
+
+    public Double getDescontoPorcentagem() {
+        return descontoPorcentagem;
+    }
+
+    public void setDescontoPorcentagem(Double descontoPorcentagem) {
+        this.descontoPorcentagem = descontoPorcentagem;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Double getQtde() {
+        return qtde;
+    }
+
+    public void setQtde(Double qtde) {
+        this.qtde = qtde;
+    }
+
+    public Double getTotalSemDesconto() {
+        return totalSemDesconto;
+    }
+
+    public void setTotalSemDesconto(Double totalSemDesconto) {
+        this.totalSemDesconto = totalSemDesconto;
+    }
+
+    public Double getTotalComDesconto() {
+        return totalComDesconto;
+    }
+
+    public void setTotalComDesconto(Double totalComDesconto) {
+        this.totalComDesconto = totalComDesconto;
+    }
+
+}

@@ -1,0 +1,115 @@
+
+package org.parceler;
+
+import java.util.HashMap;
+import java.util.Map;
+import com.najasoftware.fdv.model.CategoriaProduto;
+import com.najasoftware.fdv.model.CategoriaProduto$$Parcelable;
+import com.najasoftware.fdv.model.Cliente;
+import com.najasoftware.fdv.model.Cliente$$Parcelable;
+import com.najasoftware.fdv.model.Item;
+import com.najasoftware.fdv.model.Item$$Parcelable;
+import com.najasoftware.fdv.model.Pedido;
+import com.najasoftware.fdv.model.Pedido$$Parcelable;
+import com.najasoftware.fdv.model.Produto;
+import com.najasoftware.fdv.model.Produto$$Parcelable;
+import com.najasoftware.fdv.model.Telefone;
+import com.najasoftware.fdv.model.Telefone$$Parcelable;
+
+@Generated(value = "org.parceler.ParcelAnnotationProcessor", date = "2016-07-29T09:22-0400")
+@SuppressWarnings({
+    "unchecked",
+    "deprecation"
+})
+public class Parceler$$Parcels
+    implements Repository<org.parceler.Parcels.ParcelableFactory>
+{
+
+    private final Map<Class, org.parceler.Parcels.ParcelableFactory> map$$0 = new HashMap<Class, org.parceler.Parcels.ParcelableFactory>();
+
+    public Parceler$$Parcels() {
+        map$$0 .put(CategoriaProduto.class, new Parceler$$Parcels.CategoriaProduto$$Parcelable$$0());
+        map$$0 .put(Cliente.class, new Parceler$$Parcels.Cliente$$Parcelable$$0());
+        map$$0 .put(Produto.class, new Parceler$$Parcels.Produto$$Parcelable$$0());
+        map$$0 .put(Pedido.class, new Parceler$$Parcels.Pedido$$Parcelable$$0());
+        map$$0 .put(Telefone.class, new Parceler$$Parcels.Telefone$$Parcelable$$0());
+        map$$0 .put(Item.class, new Parceler$$Parcels.Item$$Parcelable$$0());
+    }
+
+    public Map<Class, org.parceler.Parcels.ParcelableFactory> get() {
+        return map$$0;
+    }
+
+    private final static class CategoriaProduto$$Parcelable$$0
+        implements org.parceler.Parcels.ParcelableFactory<CategoriaProduto>
+    {
+
+
+        @Override
+        public CategoriaProduto$$Parcelable buildParcelable(CategoriaProduto input) {
+            return new CategoriaProduto$$Parcelable(input);
+        }
+
+    }
+
+    private final static class Cliente$$Parcelable$$0
+        implements org.parceler.Parcels.ParcelableFactory<Cliente>
+    {
+
+
+        @Override
+        public Cliente$$Parcelable buildParcelable(Cliente input) {
+            return new Cliente$$Parcelable(input);
+        }
+
+    }
+
+    private final static class Item$$Parcelable$$0
+        implements org.parceler.Parcels.ParcelableFactory<Item>
+    {
+
+
+        @Override
+        public Item$$Parcelable buildParcelable(Item input) {
+            return new Item$$Parcelable(input);
+        }
+
+    }
+
+    private final static class Pedido$$Parcelable$$0
+        implements org.parceler.Parcels.ParcelableFactory<Pedido>
+    {
+
+
+        @Override
+        public Pedido$$Parcelable buildParcelable(Pedido input) {
+            return new Pedido$$Parcelable(input);
+        }
+
+    }
+
+    private final static class Produto$$Parcelable$$0
+        implements org.parceler.Parcels.ParcelableFactory<Produto>
+    {
+
+
+        @Override
+        public Produto$$Parcelable buildParcelable(Produto input) {
+            return new Produto$$Parcelable(input);
+        }
+
+    }
+
+    private final static class Telefone$$Parcelable$$0
+        implements org.parceler.Parcels.ParcelableFactory<Telefone>
+    {
+
+
+        @Override
+        public Telefone$$Parcelable buildParcelable(Telefone input) {
+            return new Telefone$$Parcelable(input);
+        }
+
+    }
+
+}

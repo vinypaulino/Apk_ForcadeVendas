@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<instant-run
+    abi="x86"
+    api-level="23"
+    density="420dpi"
+    format="7"
+    timestamp="3706859984840"
+    token="-5336834763566221542" >
+
+    <task
+        name="javac"
+        duration="10441" />
+    <task
+        name="instant-run-dex"
+        duration="0" />
+    <task
+        name="instant-run-transform"
+        duration="1740" />
+    <task
+        name="verifier"
+        duration="482" />
+
+    <artifact
+        location="D:\AndroidStudio\Apk_ForcadeVendas\app\build\outputs\apk\app-debug.apk"
+        type="MAIN" />
+
+    <build timestamp="3706859984840" >
+        <artifact
+            location="D:\AndroidStudio\Apk_ForcadeVendas\app\build\outputs\apk\app-debug.apk"
+            type="MAIN" />
+    </build>
+
+</instant-run>

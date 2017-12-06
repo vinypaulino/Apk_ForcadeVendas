@@ -1,0 +1,81 @@
+package com.najasoftware.fdv.service;
+
+import android.content.Context;
+import android.util.Log;
+
+import com.najasoftware.fdv.model.Vendedor;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import livroandroid.lib.utils.FileUtils;
+
+/**
+ * Created by Lemoel Marques - NajaSoftware on 02/05/2016.
+ * lemoel@gmail.com
+ */
+public class VerdedorService {
+
+    private static final boolean LOG_ON = false;
+    private static final String TAG = "VendedorService";
+
+    public static List<Vendedor> getVendedores(Context context) throws IOException {
+        try {
+            String fileName = String.format("vendedores_fdv.json");
+            Log.d(TAG,"Abrindo arquivo: " + fileName);
+
+            //Lê o arquivo da memoria interna
+            String json = FileUtils.readFile(context,fileName,"UTF-8");
+            if(json == null) {
+                Log.d(TAG,"Arquivo " + fileName + " Não encontrado");
+                return null;
+            }
+            List<Vendedor> vendedores = parserJson(context,json);
+            return vendedores;
+        } catch (Exception e) {
+            Log.e(TAG, "Erro ao ler os vendedores: " + e.getMessage(),e);
+            return null;
+        }
+    }
+
+    private static List<Vendedor> parserJson(Context context, String json) throws IOException {
+        List<Vendedor> vendedores = new ArrayList<Vendedor>();
+
+        try {
+            JSONObject root = new JSONObject(json);
+            JSONObject obj = root.getJSONObject("vendedores");
+            JSONArray jsonVendedores = obj.getJSONArray("vendedor");
+
+            for(int i = 0; i< jsonVendedores.length(); i++) {
+                JSONObject jsonVendedor = jsonVendedores.getJSONObject(i);
+                Vendedor v = new Vendedor();
+
+                //Lê informações de cada produto
+                v.setId(jsonVendedor.optLong("cod_vendedor"));
+                v.setNome(jsonVendedor.optString("usr_nome"));
+                v.setLogin(jsonVendedor.optString("usr_usuario"));
+                v.setSenha(jsonVendedor.optString("usr_senha"));
+
+                if (LOG_ON) {
+                    Log.d(TAG, "Produto " + v.getNome());
+                }
+
+                vendedores.add(v);
+            }
+
+            if (LOG_ON) {
+                Log.d(TAG,vendedores.size() + " encontrados. ");
+            }
+
+        } catch (JSONException e) {
+            throw  new IOException(e.getMessage(),e);
+        }
+        return vendedores;
+    }
+
+}

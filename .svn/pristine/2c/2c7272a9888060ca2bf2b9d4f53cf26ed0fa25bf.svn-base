@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Esta chava aqui é para DEBUG, para funcionar o Google MAP/Location-->
+    <!--<string name="API_KEY">AIzaSyDG7Wj-R3OI1SLaWOGXdwr1uwBZhbjlfPg</string>-->
+
+    <!--Esta chava aqui é para REALISE, PRODUCAO , para funcionar o Google MAP/Location-->
+    <string name="API_KEY">AIzaSyC01hwejl3A9cK6H_lMhiA-tcvWI_6AxEQ</string>
+
+</resources>

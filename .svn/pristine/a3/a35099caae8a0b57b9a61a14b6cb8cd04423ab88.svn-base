@@ -1,0 +1,46 @@
+[
+    {
+        "merged": "D:\\AndroidStudio\\Apk_ForcadeVendas\\app\\build\\intermediates\\res\\merged\\debug\\menu\\nav_drawer_menu_fdv.xml",
+        "source": "D:\\AndroidStudio\\Apk_ForcadeVendas\\app\\src\\main\\res\\menu\\nav_drawer_menu_fdv.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudio\\Apk_ForcadeVendas\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_activity_add_item_pedido.xml",
+        "source": "D:\\AndroidStudio\\Apk_ForcadeVendas\\app\\src\\main\\res\\menu\\menu_activity_add_item_pedido.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudio\\Apk_ForcadeVendas\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_pedido.xml",
+        "source": "D:\\AndroidStudio\\Apk_ForcadeVendas\\app\\src\\main\\res\\menu\\menu_pedido.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudio\\Apk_ForcadeVendas\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_config.xml",
+        "source": "D:\\AndroidStudio\\Apk_ForcadeVendas\\app\\src\\main\\res\\menu\\menu_config.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudio\\Apk_ForcadeVendas\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_activity_cliente_location.xml",
+        "source": "D:\\AndroidStudio\\Apk_ForcadeVendas\\app\\src\\main\\res\\menu\\menu_activity_cliente_location.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudio\\Apk_ForcadeVendas\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_busca_categoria.xml",
+        "source": "D:\\AndroidStudio\\Apk_ForcadeVendas\\app\\src\\main\\res\\menu\\menu_busca_categoria.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudio\\Apk_ForcadeVendas\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_main.xml",
+        "source": "D:\\AndroidStudio\\Apk_ForcadeVendas\\app\\src\\main\\res\\menu\\menu_main.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudio\\Apk_ForcadeVendas\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_scrolling.xml",
+        "source": "D:\\AndroidStudio\\Apk_ForcadeVendas\\app\\src\\main\\res\\menu\\menu_scrolling.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudio\\Apk_ForcadeVendas\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_add_item_pedido.xml",
+        "source": "D:\\AndroidStudio\\Apk_ForcadeVendas\\app\\src\\main\\res\\menu\\menu_add_item_pedido.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudio\\Apk_ForcadeVendas\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_busca_produto.xml",
+        "source": "D:\\AndroidStudio\\Apk_ForcadeVendas\\app\\src\\main\\res\\menu\\menu_busca_produto.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudio\\Apk_ForcadeVendas\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_form_cliente_salvar.xml",
+        "source": "D:\\AndroidStudio\\Apk_ForcadeVendas\\app\\src\\main\\res\\menu\\menu_form_cliente_salvar.xml"
+    }
+]

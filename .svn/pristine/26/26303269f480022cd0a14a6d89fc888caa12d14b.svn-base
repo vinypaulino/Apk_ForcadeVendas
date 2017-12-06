@@ -1,0 +1,122 @@
+package com.najasoftware.fdv.adapter;
+
+import android.content.Context;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.najasoftware.fdv.R;
+import com.najasoftware.fdv.model.Produto;
+import com.squareup.picasso.Picasso;
+import org.parceler.apache.commons.lang.StringUtils;
+
+import java.util.List;
+
+/**
+ * Created by Lemoel Marques - NajaSoftware on 08/04/2016.
+ * lemoel@gmail.com
+ */
+public class ProdutosAdapter extends RecyclerView.Adapter<ProdutosAdapter.ProdutosViewHolder> {
+
+    protected static final String TAG = "fdv";
+    private final List<Produto> produtos;
+    private final Context context;
+    private ProdutoOnClickListener produtoOnClickListener;
+
+    public ProdutosAdapter(Context context, List<Produto> produtos, ProdutoOnClickListener
+            produtoOnClickListener) {
+        this.context = context;
+        this.produtos = produtos;
+        this.produtoOnClickListener = produtoOnClickListener;
+    }
+
+    @Override
+    public int getItemCount() {
+        return this.produtos != null ? this.produtos.size() : 0;
+    }
+
+    @Override
+    public ProdutosViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.adapter_produto, viewGroup, false);
+        ProdutosViewHolder holder = new ProdutosViewHolder(view);
+        return holder;
+    }
+
+    @Override
+    public void onBindViewHolder(final ProdutosViewHolder holder, final int position) {
+        // Atualiza a view
+        Produto produto = produtos.get(position);
+        holder.tNome.setText(produto.getNome());
+        holder.tPreco.setText("R$ " + produto.getPreco().toString());
+        holder.tCategoria.setText(produto.getCategoria().getNome());
+        holder.tDescricao.setText(produto.getDescricao());
+        holder.tvProdutoID.setText("Cod: " + produto.getId().toString().trim());
+
+        // Faz o download da foto e mostra o ProgressBar
+        if (StringUtils.isNotBlank(produto.getUrlFoto())) {
+
+            //Caso exista imagem habilita a area para mostrar na view.
+            holder.img.setVisibility(View.VISIBLE);
+
+            holder.progress.setVisibility(View.VISIBLE);
+            Picasso.with(context).load(produto.getUrlFoto()).fit().into(holder.img,
+                    new com.squareup.picasso.Callback() {
+                        @Override
+                        public void onSuccess() {
+                            holder.progress.setVisibility(View.GONE); // download ok
+                        }
+
+                        @Override
+                        public void onError() {
+                            holder.progress.setVisibility(View.GONE);
+                        }
+                    });
+        }
+
+        // Click
+        if (produtoOnClickListener != null) {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // A variável position é final
+                    produtoOnClickListener.onClickProduto(holder.itemView, position);
+                }
+            });
+        }
+    }
+
+    public interface ProdutoOnClickListener {
+        public void onClickProduto(View view, int idx);
+    }
+
+    // ViewHolder com as views
+    public static class ProdutosViewHolder extends RecyclerView.ViewHolder {
+        public TextView tNome;
+        public TextView tPreco;
+        public TextView tDescricao;
+        public TextView tCategoria;
+        public TextView tvProdutoID;
+        CardView cardView;
+        ImageView img;
+        ProgressBar progress;
+
+        public ProdutosViewHolder(View view) {
+            super(view);
+            img = (ImageView) view.findViewById(R.id.img_produto);
+            progress = (ProgressBar) view.findViewById(R.id.progressImg_produto);
+
+            // Cria as views para salvar no ViewHolder
+            tNome = (TextView) view.findViewById(R.id.tvProdutoNome);
+            tPreco = (TextView) view.findViewById(R.id.tvPreco);
+            tDescricao = (TextView) view.findViewById(R.id.tvDescricao);
+            tCategoria = (TextView) view.findViewById(R.id.tvCategoria);
+            cardView = (CardView) view.findViewById(R.id.card_view_produto);
+            tvProdutoID = (TextView) view.findViewById(R.id.tvProdutoID);
+        }
+    }
+
+}

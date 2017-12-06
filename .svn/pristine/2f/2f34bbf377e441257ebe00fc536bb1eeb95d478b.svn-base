@@ -1,0 +1,106 @@
+package com.najasoftware.fdv.dao;
+
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
+/**
+ * Created by Lemoel Marques - NajaSoftware on 25/05/2016.
+ * lemoel@gmail.com
+ */
+public class BancoDAO  extends SQLiteOpenHelper {
+
+    private static final String TAG = "sql";
+    private static final String BANCO_DADOS = "Fdv.db";
+    private static final int VERSAO = 1;
+    protected SQLiteDatabase db;
+    private String sql;
+    private Context context;
+
+    public BancoDAO(Context context) {
+        super(context, BANCO_DADOS, null, VERSAO);
+        this.context = context;
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+
+        Log.d(TAG, "Criando tabela de UFS...");
+        String sql = "CREATE TABLE IF NOT EXISTS UFS ( _id INTEGER PRIMARY KEY, NOME STRING, SIGLA STRING);";
+        db.execSQL(sql);
+        Log.d(TAG, "Tabela UFS criada com sucesso ...");
+
+        Log.d(TAG, "Criando tabela CIDADES...");
+        sql = "CREATE TABLE IF NOT EXISTS CIDADES (_id INTEGER NOT NULL PRIMARY KEY, NOME STRING NOT NULL,UF_ID INTEGER REFERENCES UFS (_id));";
+        db.execSQL(sql);
+        Log.d(TAG, "Tabela CIDADES criada com sucesso ...");
+
+        Log.d(TAG, "Criando tabela VENDEDORES...");
+        sql = "CREATE TABLE VENDEDORES (_id INTEGER PRIMARY KEY, LOGIN STRING NOT NULL, SENHA STRING NOT NULL, NOME STRING NOT NULL);";
+        db.execSQL(sql);
+        Log.d(TAG, "Tabela VENDEDORES criada com sucesso ...");
+
+        Log.d(TAG, "Criando tabela CLIENTES...");
+        sql = "CREATE TABLE CLIENTES (CNPJ STRING PRIMARY KEY NOT NULL, " +
+                "RG STRING, ORGAO_RG STRING, INSCRICAO_ESTADUAL STRING, " +
+                "NOME STRING NOT NULL, NOME_FANTASIA STRING, " +
+                "STATUS INTEGER NOT NULL, STATUS_FINANCEIRO STRING NOT NULL, " +
+                "EMAIL STRING NOT NULL, DT_CADASTRO STRING, " +
+                "DT_ULTIMA_ALTERACAO STRING, OBS STRING, " +
+                "LATITUDE DOUBLE, LONGITUDE DOUBLE);";
+
+        db.execSQL(sql);
+        Log.d(TAG, "Tabela CLIENTES criada com sucesso ...");
+
+        Log.d(TAG, "Criando tabela TELEFONES...");
+        sql = " CREATE TABLE TELEFONES (_id INTEGER PRIMARY KEY AUTOINCREMENT, CLIENTE_CNPJ STRING NOT NULL REFERENCES CLIENTES (CNPJ), NUM_TEL STRING NOT NULL); ";
+        db.execSQL(sql);
+        Log.d(TAG, "Tabela TELEFONES criada com sucesso ...");
+
+        Log.d(TAG, "Criando tabela ENDERECOS...");
+        sql = " CREATE TABLE ENDERECOS (_id INTEGER PRIMARY KEY AUTOINCREMENT, CLIENTE_CNPJ STRING REFERENCES CLIENTES (CNPJ), CIDADE_ID INTEGER REFERENCES CIDADES (_id), NOME_RUA STRING, NUMERO INTEGER, BAIRRO STRING, COMPLEMENTO STRING);";
+        db.execSQL(sql);
+        Log.d(TAG, "Tabela ENDERECOS criada com sucesso ...");
+
+        Log.d(TAG, "Criando tabela CATEGORIAS...");
+        sql = "CREATE TABLE CATEGORIAS (_id INTEGER PRIMARY KEY, NOME STRING, URL_FOTO STRING);";
+        db.execSQL(sql);
+        Log.d(TAG, "Tabela CATEGORIAS criada com sucesso ...");
+
+        Log.d(TAG, "Criando tabela PRODUTOS...");
+        sql = "CREATE TABLE PRODUTOS (_id INTEGER PRIMARY KEY NOT NULL, NOME TEXT NOT NULL, PRECO REAL NOT NULL, DESCRICAO TEXT, TP_UNIDADE STRING NOT NULL, CATEGORIA_ID INTEGER REFERENCES CATEGORIAS (_id), URL_FOTO STRING);";
+        db.execSQL(sql);
+        Log.d(TAG, "Tabela PRODUTOS criada com sucesso ...");
+
+        Log.d(TAG, "Criando tabela FORMA_PGTO...");
+        sql = "CREATE TABLE FORMA_PGTO (_id INTEGER PRIMARY KEY NOT NULL, NOME STRING NOT NULL);";
+        db.execSQL(sql);
+        Log.d(TAG, "Tabela FORMA_PGTO criada com sucesso ...");
+
+        Log.d(TAG, "Criando tabela PEDIDOS...");
+        sql = "CREATE TABLE PEDIDOS (_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, CLIENTE_CNPJ STRING NOT NULL, VENDEDOR_ID INTEGER REFERENCES VENDEDORES (_id) NOT NULL, OBS TEXT, STATUS INTEGER NOT NULL, DT_VENDA STRING NOT NULL, TOTAL_SEM_DESCONTO DOUBLE, TOTAL_COM_DESCONTO DOUBLE, DESCONTO DOUBLE, FORMA_PGTO_ID INTEGER REFERENCES FORMA_PGTO (_id), DT_ENVIO_SERVIDOR STRING);";
+        db.execSQL(sql);
+        Log.d(TAG, "Tabela PEDIDOS criada com sucesso ...");
+
+        Log.d(TAG, "Criando tabela ITENS...");
+        sql = "CREATE TABLE ITENS (_id INTEGER PRIMARY KEY NOT NULL, NOME STRING NOT NULL, PEDIDO_ID INTEGER REFERENCES FORMA_PGTO (_id) ON DELETE CASCADE NOT NULL, PRODUTO_ID INTEGER NOT NULL REFERENCES CATEGORIAS (_id), PRECO_SUGERIDO DOUBLE NOT NULL, QTDE INTEGER NOT NULL, TOTAL_SEM_DESCONTO DOUBLE NOT NULL, TOTAL_COM_DESCONTO DOUBLE NOT NULL, DESCONTO DOUBLE NOT NULL);";
+        db.execSQL(sql);
+        Log.d(TAG, "Tabela ITENS criada com sucesso ...");
+
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+    }
+
+    public SQLiteDatabase getDb() {
+
+        if (db == null || !db.isOpen()) {
+            db = getWritableDatabase();
+        }
+
+        return db;
+    }
+}

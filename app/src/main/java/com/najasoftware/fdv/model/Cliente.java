@@ -1,0 +1,205 @@
+package com.najasoftware.fdv.model;
+
+import android.util.Log;
+
+import java.io.Serializable;
+import java.util.List;
+
+/**
+ * Created by Lemoel Marques - NajaSoftware on 04/03/2016.
+ * lemoel@gmail.com
+ */
+@org.parceler.Parcel
+public class  Cliente implements Serializable {
+
+    private String cnpj;
+    private String rg;
+    private String inscricacaoEstadual;
+    private String dtCadastro;
+    private String dtUltimaAlteracao;
+    private String nome;
+    private String nomeFantasia;
+    private int status;
+    private String statusFinanceiro;
+    private double latitude;
+    private double longitude;
+    private String urlFoto;
+    private String email;
+    private String obs;
+    private String orgaoExpedidorRg;
+    private List<Telefone> telefones;
+    private List<Endereco> enderecos;
+    private Long vendedorId;
+    private boolean selected;
+
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    public String getStatusFinanceiro() {
+        return statusFinanceiro;
+    }
+
+    public void setStatusFinanceiro(String statusFinanceiro) {
+        this.statusFinanceiro = statusFinanceiro;
+    }
+
+    public String getUrlFoto() {
+        return urlFoto;
+    }
+
+    public void setUrlFoto(String urlFoto) {
+        this.urlFoto = urlFoto;
+    }
+
+    public String getRg() {
+        return rg;
+    }
+
+    public void setRg(String rg) {
+        this.rg = rg;
+    }
+
+    public String getInscricacaoEstadual() {
+        return inscricacaoEstadual;
+    }
+
+    public void setInscricacaoEstadual(String inscricacaoEstadual) {
+        this.inscricacaoEstadual = inscricacaoEstadual;
+    }
+
+    public String getDtCadastro() {
+        return dtCadastro;
+    }
+
+    public void setDtCadastro(String dtCadastro) {
+        this.dtCadastro = dtCadastro;
+    }
+
+    public String getDtUltimaAlteracao() {
+        return dtUltimaAlteracao;
+    }
+
+    public void setDtUltimaAlteracao(String dtUltimaAlteracao) {
+        this.dtUltimaAlteracao = dtUltimaAlteracao;
+    }
+
+    public String getNomeFantasia() {
+        return nomeFantasia;
+    }
+
+    public void setNomeFantasia(String nomeFantasia) {
+        this.nomeFantasia = nomeFantasia;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getObs() {
+        return obs;
+    }
+
+    public void setObs(String obs) {
+        this.obs = obs;
+    }
+
+    public String getOrgaoExpedidorRg() {
+        return orgaoExpedidorRg;
+    }
+
+    public void setOrgaoExpedidorRg(String orgaoExpedidorRg) {
+        this.orgaoExpedidorRg = orgaoExpedidorRg;
+    }
+
+    public Long getVendedorId() {
+        return vendedorId;
+    }
+
+    public void setVendedorId(Long vendedorId) {
+        this.vendedorId = vendedorId;
+    }
+
+    public List<Telefone> getTelefones() {
+        return telefones;
+    }
+
+    public void setTelefones(List<Telefone> telefones) {
+        this.telefones = telefones;
+    }
+
+    public List<Endereco> getEnderecos() {
+        return enderecos;
+    }
+
+    public void setEnderecos(List<Endereco> enderecos) {
+        this.enderecos = enderecos;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Cliente cliente = (Cliente) o;
+
+        return cnpj != null ? cnpj.equals(cliente.cnpj) : cliente.cnpj == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return cnpj != null ? cnpj.hashCode() : 0;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+
+}

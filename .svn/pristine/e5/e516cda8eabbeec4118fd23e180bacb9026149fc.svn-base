@@ -1,0 +1,194 @@
+
+package com.najasoftware.fdv.model;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import android.os.Parcelable;
+import android.os.Parcelable.Creator;
+import org.parceler.Generated;
+import org.parceler.InjectionUtil;
+import org.parceler.ParcelWrapper;
+import org.parceler.ParcelerRuntimeException;
+
+@Generated(value = "org.parceler.ParcelAnnotationProcessor", date = "2016-07-18T11:07-0400")
+@SuppressWarnings({
+    "unchecked",
+    "deprecation"
+})
+public class Pedido$$Parcelable
+    implements Parcelable, ParcelWrapper<com.najasoftware.fdv.model.Pedido>
+{
+
+    private com.najasoftware.fdv.model.Pedido pedido$$0;
+    @SuppressWarnings("UnusedDeclaration")
+    public final static Pedido$$Parcelable.Creator$$3 CREATOR = new Pedido$$Parcelable.Creator$$3();
+
+    public Pedido$$Parcelable(com.najasoftware.fdv.model.Pedido pedido$$2) {
+        pedido$$0 = pedido$$2;
+    }
+
+    @Override
+    public void writeToParcel(android.os.Parcel parcel$$0, int flags) {
+        write(pedido$$0, parcel$$0, flags, new HashSet<Integer>());
+    }
+
+    public static void write(com.najasoftware.fdv.model.Pedido pedido$$1, android.os.Parcel parcel$$1, int flags$$0, Set<Integer> identitySet$$0) {
+        int identity$$0 = System.identityHashCode(pedido$$1);
+        parcel$$1 .writeInt(identity$$0);
+        if (!identitySet$$0 .contains(identity$$0)) {
+            identitySet$$0 .add(identity$$0);
+            if (pedido$$1 == null) {
+                parcel$$1 .writeInt(-1);
+            } else {
+                parcel$$1 .writeInt(1);
+                parcel$$1 .writeString(InjectionUtil.getField(java.lang.String.class, com.najasoftware.fdv.model.Pedido.class, pedido$$1, "obs"));
+                parcel$$1 .writeSerializable(InjectionUtil.getField(com.najasoftware.fdv.model.Vendedor.class, com.najasoftware.fdv.model.Pedido.class, pedido$$1, "vendedor"));
+                if (InjectionUtil.getField(java.util.List.class, com.najasoftware.fdv.model.Pedido.class, pedido$$1, "itens") == null) {
+                    parcel$$1 .writeInt(-1);
+                } else {
+                    parcel$$1 .writeInt(InjectionUtil.getField(java.util.List.class, com.najasoftware.fdv.model.Pedido.class, pedido$$1, "itens").size());
+                    for (com.najasoftware.fdv.model.Item item$$0 : ((java.util.List<com.najasoftware.fdv.model.Item> ) InjectionUtil.getField(java.util.List.class, com.najasoftware.fdv.model.Pedido.class, pedido$$1, "itens"))) {
+                        com.najasoftware.fdv.model.Item$$Parcelable.write(item$$0, parcel$$1, flags$$0, identitySet$$0);
+                    }
+                }
+                parcel$$1 .writeString(InjectionUtil.getField(java.lang.String.class, com.najasoftware.fdv.model.Pedido.class, pedido$$1, "dataVenda"));
+                if (InjectionUtil.getField(java.lang.Double.class, com.najasoftware.fdv.model.Pedido.class, pedido$$1, "desconto") == null) {
+                    parcel$$1 .writeInt(-1);
+                } else {
+                    parcel$$1 .writeInt(1);
+                    parcel$$1 .writeDouble(InjectionUtil.getField(java.lang.Double.class, com.najasoftware.fdv.model.Pedido.class, pedido$$1, "desconto"));
+                }
+                parcel$$1 .writeSerializable(InjectionUtil.getField(com.najasoftware.fdv.model.FormaPgto.class, com.najasoftware.fdv.model.Pedido.class, pedido$$1, "formaPgto"));
+                com.najasoftware.fdv.model.Cliente$$Parcelable.write(InjectionUtil.getField(com.najasoftware.fdv.model.Cliente.class, com.najasoftware.fdv.model.Pedido.class, pedido$$1, "cliente"), parcel$$1, flags$$0, identitySet$$0);
+                parcel$$1 .writeString(InjectionUtil.getField(java.lang.String.class, com.najasoftware.fdv.model.Pedido.class, pedido$$1, "formaPgtoObs"));
+                if (InjectionUtil.getField(java.lang.Double.class, com.najasoftware.fdv.model.Pedido.class, pedido$$1, "totalComDesconto") == null) {
+                    parcel$$1 .writeInt(-1);
+                } else {
+                    parcel$$1 .writeInt(1);
+                    parcel$$1 .writeDouble(InjectionUtil.getField(java.lang.Double.class, com.najasoftware.fdv.model.Pedido.class, pedido$$1, "totalComDesconto"));
+                }
+                if (InjectionUtil.getField(java.lang.Long.class, com.najasoftware.fdv.model.Pedido.class, pedido$$1, "id") == null) {
+                    parcel$$1 .writeInt(-1);
+                } else {
+                    parcel$$1 .writeInt(1);
+                    parcel$$1 .writeLong(InjectionUtil.getField(java.lang.Long.class, com.najasoftware.fdv.model.Pedido.class, pedido$$1, "id"));
+                }
+                if (InjectionUtil.getField(java.lang.Double.class, com.najasoftware.fdv.model.Pedido.class, pedido$$1, "totalSemDesconto") == null) {
+                    parcel$$1 .writeInt(-1);
+                } else {
+                    parcel$$1 .writeInt(1);
+                    parcel$$1 .writeDouble(InjectionUtil.getField(java.lang.Double.class, com.najasoftware.fdv.model.Pedido.class, pedido$$1, "totalSemDesconto"));
+                }
+                parcel$$1 .writeString(InjectionUtil.getField(java.lang.String.class, com.najasoftware.fdv.model.Pedido.class, pedido$$1, "dataEnvioServidor"));
+                parcel$$1 .writeInt(InjectionUtil.getField(int.class, com.najasoftware.fdv.model.Pedido.class, pedido$$1, "status"));
+            }
+        }
+    }
+
+    @Override
+    public int describeContents() {
+        return  0;
+    }
+
+    @Override
+    public com.najasoftware.fdv.model.Pedido getParcel() {
+        return pedido$$0;
+    }
+
+    public static com.najasoftware.fdv.model.Pedido read(android.os.Parcel parcel$$3, Map<Integer, Object> identityMap$$0) {
+        com.najasoftware.fdv.model.Pedido pedido$$3;
+        int identity$$1 = parcel$$3 .readInt();
+        if (identityMap$$0 .containsKey(identity$$1)) {
+            com.najasoftware.fdv.model.Pedido pedido$$4 = ((com.najasoftware.fdv.model.Pedido) identityMap$$0 .get(identity$$1));
+            if ((pedido$$4 == null)&&(identity$$1 != 0)) {
+                throw new ParcelerRuntimeException("An instance loop was detected whild building Parcelable and deseralization cannot continue.  This error is most likely due to using @ParcelConstructor or @ParcelFactory.");
+            }
+            return pedido$$4;
+        }
+        if (parcel$$3 .readInt() == -1) {
+            pedido$$3 = null;
+            identityMap$$0 .put(identity$$1, null);
+        } else {
+            com.najasoftware.fdv.model.Pedido pedido$$5;
+            identityMap$$0 .put(identity$$1, null);
+            pedido$$5 = new com.najasoftware.fdv.model.Pedido();
+            identityMap$$0 .put(identity$$1, pedido$$5);
+            InjectionUtil.setField(com.najasoftware.fdv.model.Pedido.class, pedido$$5, "obs", parcel$$3 .readString());
+            InjectionUtil.setField(com.najasoftware.fdv.model.Pedido.class, pedido$$5, "vendedor", ((com.najasoftware.fdv.model.Vendedor) parcel$$3 .readSerializable()));
+            int int$$0 = parcel$$3 .readInt();
+            ArrayList<com.najasoftware.fdv.model.Item> list$$0;
+            if (int$$0 < 0) {
+                list$$0 = null;
+            } else {
+                list$$0 = new ArrayList<com.najasoftware.fdv.model.Item>(int$$0);
+                for (int int$$1 = 0; (int$$1 <int$$0); int$$1 ++) {
+                    com.najasoftware.fdv.model.Item item$$1 = com.najasoftware.fdv.model.Item$$Parcelable.read(parcel$$3, identityMap$$0);
+                    list$$0 .add(item$$1);
+                }
+            }
+            InjectionUtil.setField(com.najasoftware.fdv.model.Pedido.class, pedido$$5, "itens", list$$0);
+            InjectionUtil.setField(com.najasoftware.fdv.model.Pedido.class, pedido$$5, "dataVenda", parcel$$3 .readString());
+            int int$$2 = parcel$$3 .readInt();
+            java.lang.Double double$$0;
+            if (int$$2 < 0) {
+                double$$0 = null;
+            } else {
+                double$$0 = parcel$$3 .readDouble();
+            }
+            InjectionUtil.setField(com.najasoftware.fdv.model.Pedido.class, pedido$$5, "desconto", double$$0);
+            InjectionUtil.setField(com.najasoftware.fdv.model.Pedido.class, pedido$$5, "formaPgto", ((com.najasoftware.fdv.model.FormaPgto) parcel$$3 .readSerializable()));
+            com.najasoftware.fdv.model.Cliente cliente$$0 = com.najasoftware.fdv.model.Cliente$$Parcelable.read(parcel$$3, identityMap$$0);
+            InjectionUtil.setField(com.najasoftware.fdv.model.Pedido.class, pedido$$5, "cliente", cliente$$0);
+            InjectionUtil.setField(com.najasoftware.fdv.model.Pedido.class, pedido$$5, "formaPgtoObs", parcel$$3 .readString());
+            int int$$3 = parcel$$3 .readInt();
+            java.lang.Double double$$1;
+            if (int$$3 < 0) {
+                double$$1 = null;
+            } else {
+                double$$1 = parcel$$3 .readDouble();
+            }
+            InjectionUtil.setField(com.najasoftware.fdv.model.Pedido.class, pedido$$5, "totalComDesconto", double$$1);
+            int int$$4 = parcel$$3 .readInt();
+            java.lang.Long long$$0;
+            if (int$$4 < 0) {
+                long$$0 = null;
+            } else {
+                long$$0 = parcel$$3 .readLong();
+            }
+            InjectionUtil.setField(com.najasoftware.fdv.model.Pedido.class, pedido$$5, "id", long$$0);
+            int int$$5 = parcel$$3 .readInt();
+            java.lang.Double double$$2;
+            if (int$$5 < 0) {
+                double$$2 = null;
+            } else {
+                double$$2 = parcel$$3 .readDouble();
+            }
+            InjectionUtil.setField(com.najasoftware.fdv.model.Pedido.class, pedido$$5, "totalSemDesconto", double$$2);
+            InjectionUtil.setField(com.najasoftware.fdv.model.Pedido.class, pedido$$5, "dataEnvioServidor", parcel$$3 .readString());
+            InjectionUtil.setField(com.najasoftware.fdv.model.Pedido.class, pedido$$5, "status", parcel$$3 .readInt());
+            pedido$$3 = pedido$$5;
+        }
+        return pedido$$3;
+    }
+
+    public final static class Creator$$3
+        implements Creator<Pedido$$Parcelable>
+    {
+
+
+        @Override
+        public Pedido$$Parcelable createFromParcel(android.os.Parcel parcel$$2) {
+            return new Pedido$$Parcelable(read(parcel$$2, new HashMap<Integer, Object>()));
+        }
+
+        @Override
+        public Pedido$$Parcelable[] newArray(int size) {
+            return new Pedido$$Parcelable[size] ;
+        }
+
+    }
+
+}
