@@ -15,6 +15,8 @@ import com.najasoftware.fdv.model.Vendedor;
 
 import java.io.File;
 
+import livroandroid.lib.utils.Prefs;
+
 public class LoginActivity extends BaseActivity {
 
     private Button entrar;
@@ -27,11 +29,28 @@ public class LoginActivity extends BaseActivity {
         entrar = (Button) findViewById(R.id.btLogin);
         configurar = (Button) findViewById(R.id.btConfigurarTelaLogin);
 
-        File file = new File(this.getFilesDir(), "credencial.json");
+        //verifica se o usuario esta logado
+        boolean logado = Prefs.getBoolean(getContext(), "logado");
 
-        if (!file.exists()) {
+        if (logado) {
+           // toast("usuario logado");
+            VendedorDAO vendedorDAO = new VendedorDAO(this);
+            Vendedor vendedor;
+            vendedor = vendedorDAO.getVendedor(Prefs.getString(getContext(),"vendedor"));
+            FdvApplication app = FdvApplication.getInstance();
+            app.setVendedor(vendedor);
+
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
             finish();
-            startActivity(new Intent(LoginActivity.this, LocalizaCnpjActivity.class));
+        } else {
+            //toast("não logado");
+            File file = new File(this.getFilesDir(), "credencial.json");
+
+            if (!file.exists()) {
+                finish();
+                startActivity(new Intent(LoginActivity.this, LocalizaCnpjActivity.class));
+            }
         }
     }
 
@@ -48,6 +67,8 @@ public class LoginActivity extends BaseActivity {
                 if (vendedor.getLogin().equals(vendedorForm.getLogin()) && vendedor.getSenha().equals(vendedorForm.getSenha())) {
                     FdvApplication app = FdvApplication.getInstance();
                     app.setVendedor(vendedor);
+                    Prefs.setBoolean(getContext(), "logado", true);
+                    Prefs.setString(getContext(), "vendedor", vendedorForm.getLogin());
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();

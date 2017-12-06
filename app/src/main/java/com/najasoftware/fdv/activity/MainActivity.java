@@ -35,6 +35,7 @@ import org.parceler.Parcels;
 import java.util.List;
 
 import livroandroid.lib.utils.AndroidUtils;
+import livroandroid.lib.utils.Prefs;
 
 public class MainActivity extends BaseActivity {
 
@@ -144,6 +145,7 @@ public class MainActivity extends BaseActivity {
                 toast("Necessário uma conexão com a internet");
             }
         } else if (id == R.id.action_sair) {
+            Prefs.setBoolean(getContext(),"logado",false);
             finish();
         } else if (id == R.id.action_download_dados) {
             startActivity(new Intent(getContext(), ConfigGeralActivity.class));

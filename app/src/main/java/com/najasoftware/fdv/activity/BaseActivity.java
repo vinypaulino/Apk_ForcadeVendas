@@ -22,6 +22,7 @@ import com.najasoftware.fdv.util.Util;
 
 import livroandroid.lib.utils.AndroidUtils;
 import livroandroid.lib.utils.NavDrawerUtil;
+import livroandroid.lib.utils.Prefs;
 
 /**
  * Created by Lemoel Marques - NajaSoftware on 06/04/2016.
