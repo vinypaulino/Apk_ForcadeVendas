@@ -1,5 +1,6 @@
 package com.najasoftware.fdv.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -45,8 +46,12 @@ public class ConfigGeralActivity extends BaseActivity {
 
     public void importarVendedores(View v) {
         //Checar se tem rede e conecta ao servidor FTP
+        importarVendedoresTask(this);
+    }
+
+    public void importarVendedoresTask(Context context) {
         if (AndroidUtils.isNetworkAvailable(getContext())) {
-            new VendedoresAsyncTask(this,cnpj).execute();
+            new VendedoresAsyncTask(context,"05056416000145").execute();
         } else {
             toast("Necessário uma conexão de rede!");
         }

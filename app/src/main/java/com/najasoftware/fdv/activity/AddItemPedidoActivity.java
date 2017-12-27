@@ -6,7 +6,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -110,41 +109,13 @@ public class AddItemPedidoActivity extends BaseActivity {
 
         changeQuantidade();
         changeDesconto();
-        changeDescontoPorcentagem();
 
-    }
-
-
-
-
-    private void changeDescontoPorcentagem() {
-        final EditText etDescontoPorcentagem = (EditText) findViewById(R.id.etDescontoPorcentagem);
-        TextWatcher watcher = new TextWatcher() {
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-                //String descontoPorcentagem = String.valueOf(s).toString().trim();
-                //etDescontoPorcentagem.setText("Teste");
-             //   addItemPedidoHelper.recalculaChangeDescontoPorcentagem(descontoPorcentagem);
-                log("passei porcentagem");
-            }
-        };
-        etDescontoPorcentagem.addTextChangedListener(watcher);
     }
 
 
     //Quanto a quantidade e trocada
     private void changeQuantidade() {
-        final EditText etQuantidade = (EditText) findViewById(R.id.etQuantidade);
+        EditText etQuantidade = (EditText) findViewById(R.id.etQuantidade);
         etQuantidade.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -156,7 +127,6 @@ public class AddItemPedidoActivity extends BaseActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-
                 String qtde = String.valueOf(s).toString().trim();
                 addItemPedidoHelper.recalculaChangeQtde(qtde);
             }
@@ -165,8 +135,8 @@ public class AddItemPedidoActivity extends BaseActivity {
 
     // change do desconto
     private void changeDesconto() {
-        final EditText etDesconto = (EditText) findViewById(R.id.etDesconto);
-        TextWatcher watcherDesconto = new TextWatcher() {
+        EditText etDesconto = (EditText) findViewById(R.id.etDesconto);
+        etDesconto.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
             }
@@ -176,18 +146,11 @@ public class AddItemPedidoActivity extends BaseActivity {
             }
 
             @Override
-            public void afterTextChanged(Editable editable) {
-                log("passei desconto valor");
-//                   String desconto = String.valueOf(editable).toString().trim();
-//                   etDesconto.setText("!");
-                //   addItemPedidoHelper.recalculaChangeDesconto(desconto);
-
-
+            public void afterTextChanged(Editable s) {
+                String desconto = String.valueOf(s).toString().trim();
+                addItemPedidoHelper.recalculaChangeDesconto(desconto);
             }
-        };
-
-
-        etDesconto.addTextChangedListener(watcherDesconto);
+        });
     }
 
     @Override

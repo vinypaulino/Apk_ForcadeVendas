@@ -62,7 +62,8 @@ public class ProdutoDAO extends BancoDAO {
                 " FROM " + TABLE + " P " +
                 " INNER JOIN CATEGORIAS CAT ON CAT._id =  P.CATEGORIA_ID" +
                 where +
-                " ORDER BY CAT.NOME, P.NOME ";
+                " ORDER BY CAT.NOME, P.NOME " +
+                "LIMIT 30";
 
         List<Produto> produtos = new ArrayList<Produto>();
 
@@ -119,8 +120,8 @@ public class ProdutoDAO extends BancoDAO {
                 " INNER JOIN CATEGORIAS ON CATEGORIAS._id = PRODUTOS.CATEGORIA_ID\n" +
                 " WHERE (PRODUTOS.NOME LIKE ? or PRODUTOS._id like ? )\n" +
                  where +
-                " ORDER BY PRODUTOS.NOME ";
-
+                " ORDER BY PRODUTOS.NOME " +
+                "LIMIT 30";
         query = "%" + query + "%";
         List<Produto> produtos = new ArrayList<>();
         String args[] = new String[]{query,query};

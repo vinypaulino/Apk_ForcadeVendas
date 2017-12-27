@@ -20,7 +20,6 @@ public class AddItemPedidoHelper {
     private TextView campoTotalSemDesconto;
     private EditText campoQuantidade;
     private TextView campoDesconto;
-    private TextView campoDescontoPorcentagem;
     private Item item;
     private Util util;
 
@@ -32,7 +31,6 @@ public class AddItemPedidoHelper {
         campoTotalSemDesconto = (TextView) activity.findViewById(R.id.tvTotalSemDesconto);
         campoQuantidade = (EditText) activity.findViewById(R.id.etQuantidade);
         campoDesconto = (EditText) activity.findViewById(R.id.etDesconto);
-        campoDescontoPorcentagem = (EditText) activity.findViewById(R.id.etDescontoPorcentagem);
         util = new Util();
     }
 
@@ -53,10 +51,6 @@ public class AddItemPedidoHelper {
             campoDesconto.setText(item.getDesconto().toString());
         }
 
-        if (item.getDescontoPorcentagem() != null){
-            campoDescontoPorcentagem.setText(item.getDescontoPorcentagem().toString());
-        }
-
         if(item.getQtde() != null) {
             campoQuantidade.setText(item.getQtde().toString());
         }
@@ -73,10 +67,8 @@ public class AddItemPedidoHelper {
 
         if (campoDesconto.getText().toString().equals("")) {
             this.item.setDesconto(Double.parseDouble("0"));
-            this.item.setDescontoPorcentagem(Double.parseDouble("0"));
         } else {
             this.item.setDesconto(Double.parseDouble(util.aproximar(campoDesconto.getText().toString().trim())));
-            this.item.setDescontoPorcentagem(Double.parseDouble(util.aproximar(campoDescontoPorcentagem.getText().toString().trim())));
         }
         return this.item;
     }
@@ -120,7 +112,6 @@ public class AddItemPedidoHelper {
 
         String sQtde = campoQuantidade.getText().toString();
 
-
         if (sQtde.equals("")) {
             campoTotal.setText("0");
             campoTotalSemDesconto.setText("0");
@@ -130,12 +121,9 @@ public class AddItemPedidoHelper {
             Double preco = Double.parseDouble(campoPreco.getText().toString());
             Double totalSemDesconto = Double.parseDouble(util.aproximar(qtde * preco));
 
-
             //Total com desconto
             if (!desconto.equals("")) {
                 Double totalComDesconto = Double.parseDouble(util.aproximar(totalSemDesconto - Double.parseDouble(desconto)));
-                Double porcentagem = (Double.parseDouble(desconto) * 100 / totalSemDesconto );
-                campoDescontoPorcentagem.setText(porcentagem.toString());
                 campoTotalSemDesconto.setText(totalSemDesconto.toString());
                 campoTotal.setText(totalComDesconto.toString());
             } else {
@@ -143,36 +131,5 @@ public class AddItemPedidoHelper {
                 campoTotal.setText(totalSemDesconto.toString());
             }
         }
-    }
-
-    public void recalculaChangeDescontoPorcentagem(String descontoPorcentagem) {
-        String sQtde1 = campoQuantidade.getText().toString();
-
-
-        if (sQtde1.equals("")) {
-            campoTotal.setText("0");
-            campoTotalSemDesconto.setText("0");
-        } else {
-            //Total
-            Double qtde1 = Double.parseDouble(sQtde1);
-            Double preco = Double.parseDouble(campoPreco.getText().toString());
-            Double totalSemDesconto = Double.parseDouble(util.aproximar(qtde1 * preco));
-
-
-            //Total com desconto
-            if (!descontoPorcentagem.equals("")) {
-
-                Double valorDesconto = (Double.parseDouble(String.valueOf(totalSemDesconto)) * Double.parseDouble(descontoPorcentagem)/ 100);
-                Double totalComDesconto = Double.parseDouble(util.aproximar(totalSemDesconto - valorDesconto));
-
-                campoDesconto.setText(valorDesconto.toString());
-                campoTotalSemDesconto.setText(totalSemDesconto.toString());
-                campoTotal.setText(totalComDesconto.toString());
-            } else {
-                campoTotalSemDesconto.setText(totalSemDesconto.toString());
-                campoTotal.setText(totalSemDesconto.toString());
-            }
-        }
-
     }
 }
