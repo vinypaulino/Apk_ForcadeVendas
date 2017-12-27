@@ -29,30 +29,31 @@ public class LoginActivity extends BaseActivity {
         entrar = (Button) findViewById(R.id.btLogin);
         configurar = (Button) findViewById(R.id.btConfigurarTelaLogin);
 
-        //verifica se o usuario esta logado
-        boolean logado = Prefs.getBoolean(getContext(), "logado");
+        File file = new File(this.getFilesDir(), "credencial.json");
 
-        if (logado) {
-           // toast("usuario logado");
-            VendedorDAO vendedorDAO = new VendedorDAO(this);
-            Vendedor vendedor;
-            vendedor = vendedorDAO.getVendedor(Prefs.getString(getContext(),"vendedor"));
-            FdvApplication app = FdvApplication.getInstance();
-            app.setVendedor(vendedor);
-
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
+        if (!file.exists()) {
             finish();
+            Prefs.setBoolean(getContext(), "logado", false);
+            startActivity(new Intent(LoginActivity.this, LocalizaCnpjActivity.class));
         } else {
-            //toast("não logado");
-            File file = new File(this.getFilesDir(), "credencial.json");
+            //verifica se o usuario esta logado
+            boolean logado = Prefs.getBoolean(getContext(), "logado");
 
-            if (!file.exists()) {
+            if (logado) {
+                // toast("usuario logado");
+                VendedorDAO vendedorDAO = new VendedorDAO(this);
+                Vendedor vendedor;
+                vendedor = vendedorDAO.getVendedor(Prefs.getString(getContext(), "vendedor"));
+                FdvApplication app = FdvApplication.getInstance();
+                app.setVendedor(vendedor);
+
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
                 finish();
-                startActivity(new Intent(LoginActivity.this, LocalizaCnpjActivity.class));
             }
         }
     }
+
 
     public void onClickBtLogin(View v) {
 
