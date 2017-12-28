@@ -5,6 +5,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.najasoftware.fdv.R;
 import com.najasoftware.fdv.adapter.PedidoAdapter;
@@ -51,6 +52,26 @@ public class RelatorioPedidosEnviadosActivity extends BaseActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(new PedidoAdapter(getContext(), pedidos));
+        recyclerView.setAdapter(new PedidoAdapter(getContext(), pedidos, onClickPedido()));
+    }
+
+    private PedidoAdapter.PedidosOnClickListener onClickPedido() {
+        return new PedidoAdapter.PedidosOnClickListener() {
+            @Override
+            public void onClickPedido(View view, int idx) {
+                toast("Click Pedido");
+            }
+
+            @Override
+            public void onLongClickPedido(View view, int idx, String menu) {
+                if (menu == "editar") {
+                    toast("Editar");
+                } else {
+                    toast("Ligar");
+                }
+
+            }
+
+        };
     }
 }

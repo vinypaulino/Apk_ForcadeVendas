@@ -3,7 +3,9 @@ package com.najasoftware.fdv.adapter;
 import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -21,10 +23,13 @@ public class PedidoAdapter extends RecyclerView.Adapter<PedidoAdapter.PedidosVie
 
     private final List<Pedido> pedidos;
     private final Context context;
+    private PedidosOnClickListener pedidosOnClickListener;
 
-    public PedidoAdapter(Context context, List<Pedido> pedidos) {
+    public PedidoAdapter(Context context, List<Pedido> pedidos, PedidosOnClickListener pedidosOnClickListener) {
         this.context = context;
         this.pedidos = pedidos;
+        this.pedidosOnClickListener = pedidosOnClickListener;
+
     }
 
     @Override
@@ -52,6 +57,50 @@ public class PedidoAdapter extends RecyclerView.Adapter<PedidoAdapter.PedidosVie
         holder.tPedidoComDesconto.setText(pedido.getTotalComDesconto().toString());
         holder.tDtEnvio.setText(pedido.getDataEnvioServidor());
         holder.tDtPedido.setText(pedido.getDataVenda());
+
+        // Click curto
+        if (pedidosOnClickListener != null) {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // A variável position é final
+                    pedidosOnClickListener.onClickPedido(holder.itemView, position);
+                }
+            });
+        }
+
+        // Click longo
+        holder.itemView.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
+            @Override
+            public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+
+                MenuItem editar = menu.add("Editar");
+                MenuItem ligar = menu.add("Ligar");
+
+                //Fazendo a ligação para o Cliente
+                ligar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        pedidosOnClickListener.onLongClickPedido(holder.itemView,position,"ligar");
+                        return false;
+                    }
+                });
+
+                //Tela de detalhes do cliente.
+                editar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        pedidosOnClickListener.onLongClickPedido(holder.itemView,position,"editar");
+                        return false;
+                    }
+                });
+            }
+        });
+    }
+
+    public interface PedidosOnClickListener {
+        public void onClickPedido(View view, int idx);
+        public void onLongClickPedido (View view, int idx,String menu);
     }
 
     // ViewHolder com as views

@@ -56,7 +56,6 @@ public class LoginActivity extends BaseActivity {
         }
     }
 
-
     public void onClickBtLogin(View v) {
 
         VendedorDAO vendedorDAO = new VendedorDAO(this);
